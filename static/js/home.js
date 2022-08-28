@@ -9,8 +9,9 @@ $(document).ready(function () {
       postList.empty();
       console.log(data);
       for (let i = 0; i < data.length; i++) {
-        const { quoteText, quoteAuthor } = data[i];
-        const liHuggingData = $(`<li>${quoteText}</li>`);
+        const { quoteText, quoteAuthor, _id } = data[i];
+        const liHuggingData = $(`<li id="poster${_id}"><a href="/poster?id=${_id}">${quoteText}</a></li>`);
+        liHuggingData.on("click", () => console.log("you clicked", _id));
         postList.append(liHuggingData);
       }
     },

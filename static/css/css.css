@@ -1,6 +1,11 @@
 body {
   height: 100vh;
 }
+a {
+  display: block;
+  color: rgb(30, 30, 30);
+  text-decoration: none;
+}
 nav {
   position: relative;
   height: 150px;
@@ -56,4 +61,8 @@ main .poster-list li {
   cursor: pointer;
   box-shadow: 2px 1px 4px rgba(182, 181, 181, 0.637);
   padding: 10px;
+  transition: 0.35s;
+}
+main .poster-list li:hover {
+  background-color: rgb(250, 250, 250);
 }
