@@ -2,10 +2,10 @@ body {
   height: 100vh;
 }
 nav {
-  max-height: 200px;
-  height: 15%;
-  min-height: 150px;
+  position: relative;
+  height: 150px;
   background-color: gainsboro;
+  box-shadow: 0px 0px 10px rgba(194, 192, 192, 0.466);
 }
 nav .wrapper {
   display: flex;
@@ -16,6 +16,7 @@ nav .wrapper {
 }
 nav .wrapper .logo {
   margin-top: 60px;
+  margin-left: 40px;
   font-size: 40px;
   cursor: pointer;
 }
@@ -25,6 +26,7 @@ nav .wrapper .logo .simple {
 }
 nav .wrapper .menus {
   margin-top: 96px;
+  margin-right: 36px;
   display: flex;
   width: 400px;
   justify-content: space-between;
@@ -34,4 +36,11 @@ nav .wrapper .menus li {
   cursor: pointer;
 }
 main {
+  width: 60%;
+  min-width: 300px;
+  margin: 0 auto;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  box-shadow: 0px 0px 7px rgba(131, 131, 131, 0.637);
+  padding-top: 150px;
 }
