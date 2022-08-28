@@ -9,6 +9,16 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/css.css') }}" />
   </head>
   <body>
-    {% block content %} {% endblock %}
+    <nav>
+      <div class="wrapper">
+        <div class="logo">I'm s<span class="simple">i</span>mple</div>
+        <ul class="menus">
+          <li>글작성</li>
+          <li>회원가입</li>
+          <li>로그인</li>
+        </ul>
+      </div>
+    </nav>
+    <main>{% block content %} {% endblock %}</main>
   </body>
 </html>

@@ -7,29 +7,31 @@ nav {
   min-height: 150px;
   background-color: gainsboro;
 }
-.wrapper {
+nav .wrapper {
   display: flex;
   justify-content: space-between;
   width: 60%;
   min-width: 300px;
   margin: 0 auto;
 }
-.logo {
+nav .wrapper .logo {
   margin-top: 60px;
   font-size: 40px;
   cursor: pointer;
 }
-.simple {
+nav .wrapper .logo .simple {
   display: inline-block;
   transform: rotate(-5deg);
 }
-.menus {
+nav .wrapper .menus {
   margin-top: 96px;
   display: flex;
   width: 400px;
   justify-content: space-between;
   font-size: 18px;
 }
-.menus li {
+nav .wrapper .menus li {
   cursor: pointer;
+}
+main {
 }
