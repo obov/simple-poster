@@ -1,30 +1,34 @@
 body {
   height: 100vh;
 }
-* {
-  border: 1px solid skyblue;
-}
 nav {
-  display: flex;
-  padding: 0px 60px 0px 70px;
-  justify-content: space-between;
   max-height: 200px;
   height: 15%;
   min-height: 150px;
   background-color: gainsboro;
+}
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 60%;
+  min-width: 300px;
+  margin: 0 auto;
 }
 .logo {
   margin-top: 60px;
   font-size: 40px;
   cursor: pointer;
 }
+.simple {
+  display: inline-block;
+  transform: rotate(-5deg);
+}
 .menus {
-  margin-top: 80px;
-  margin-right: 80px;
+  margin-top: 96px;
   display: flex;
   width: 400px;
   justify-content: space-between;
-  font-size: 22px;
+  font-size: 18px;
 }
 .menus li {
   cursor: pointer;
