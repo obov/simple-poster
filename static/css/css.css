@@ -45,11 +45,9 @@ nav .wrapper .menus {
 nav .wrapper .menus li {
   padding: 6px;
   cursor: pointer;
-  transition: 0.35s;
 }
 nav .wrapper .menus li:hover {
   border-bottom: 1px solid rgb(87, 87, 87);
-  transition: 0.35s;
 }
 main {
   width: 60%;
