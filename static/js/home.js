@@ -21,6 +21,7 @@ $(document).ready(function () {
     },
   });
 });
+// spa 적용 test
 window.onpopstate = function (e) {
   console.log(`${JSON.stringify(e.state)} | ${location.origin} | ${location.pathname}`);
 };
