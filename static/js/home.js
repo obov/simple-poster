@@ -1,4 +1,4 @@
-const postList = $("#postList");
+const postList = $("#posterList");
 
 $(document).ready(function () {
   $.ajax({

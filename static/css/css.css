@@ -44,3 +44,16 @@ main {
   box-shadow: 0px 0px 7px rgba(131, 131, 131, 0.637);
   padding-top: 80px;
 }
+main .poster-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+main .poster-list li {
+  width: 85%;
+  min-width: 200px;
+  cursor: pointer;
+  box-shadow: 2px 1px 4px rgba(182, 181, 181, 0.637);
+  padding: 10px;
+}
