@@ -1,11 +1,16 @@
 body {
-  height: 150vh;
+  height: fit-content;
+  min-height: 100vh;
+  padding-bottom: 50px;
   background-color: rgb(251, 251, 251);
 }
 a {
   display: block;
   color: rgb(30, 30, 30);
   text-decoration: none;
+}
+a:hover {
+  color: rgb(30, 30, 30);
 }
 i {
   cursor: pointer;
@@ -56,6 +61,7 @@ nav .wrapper .menus li:hover {
   border-bottom: 1px solid rgba(87, 87, 87, 1);
   transition: 0.5s;
 }
+
 @media (width <= 940px) {
   nav .wrapper {
     flex-direction: column;

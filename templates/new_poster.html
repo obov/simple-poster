@@ -3,33 +3,27 @@
 {% block title %}New Poster{%endblock%}<!--  -->
 
 {% block css %}
-    <link rel="stylesheet" type="text/css" href="../static/css/poster.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>    
-{% endblock %}
-
-{% block script %}
-    <script type="text/javascript" src="../static/js/new_poster.js"></script>
-{% endblock %}
-
-{% block content %}
+<link rel="stylesheet" type="text/css" href="../static/css/poster.css" />
+<!-- 부트스트랩 링크 위치 옮겼습니다. -임요한 -->
+{% endblock %} {% block script %}
+<script type="text/javascript" src="../static/js/new_poster.js"></script>
+{% endblock %} {% block content %}
 <div class="wrapper">
-    <!-- <form action="/poster" accept-charset="utf-8" name="post-submit" method="post">
+  <!-- <form action="/poster" accept-charset="utf-8" name="post-submit" method="post">
         <fieldset class="submit-wrapper" > -->
-        <div class="submit-wrapper">
-            <br>
-            <h3 class="title">글 작성하기</h3>
-            <br>
-            <input class="submit-title" id="title" type="text" name="submit-title" placeholder="제목을 입력해주세요."/>
-            <p id="help-title" class="help is-hidden">제목을 입력해주세요!!</p><br>
-            <textarea class="submit-text" id="content" type="comment" placeholder="내용을 입력해주세요."></textarea>
-            <p id="help-content" class="help is-hidden">내용을 입력해주세요!!</p><br>
-            <button class="submit-btn btn btn-secondary" id="submit" onclick="posterForm()">제출하기</button>
-        </div>
-            <!-- </fieldset>
+  <div class="submit-wrapper">
+    <br />
+    <h3 class="title">글 작성하기</h3>
+    <br />
+    <input class="submit-title" id="title" type="text" name="submit-title" placeholder="제목을 입력해주세요." />
+    <p id="help-title" class="help is-hidden">제목을 입력해주세요!!</p>
+    <br />
+    <textarea class="submit-text" id="content" type="comment" placeholder="내용을 입력해주세요."></textarea>
+    <p id="help-content" class="help is-hidden">내용을 입력해주세요!!</p>
+    <br />
+    <button class="submit-btn btn btn-secondary" id="submit" onclick="posterForm()">제출하기</button>
+  </div>
+  <!-- </fieldset>
     </form> -->
 </div>
 {% endblock %}
