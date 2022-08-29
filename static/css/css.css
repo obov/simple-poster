@@ -19,6 +19,7 @@ nav .wrapper {
   width: 60%;
   min-width: 300px;
   margin: 0 auto;
+  height: 100%;
 }
 nav .wrapper .logo {
   margin-top: 60px;
@@ -52,6 +53,24 @@ nav .wrapper .menus li {
 nav .wrapper .menus li:hover {
   border-bottom: 1px solid rgba(87, 87, 87, 1);
   transition: 0.5s;
+}
+@media (width <= 900px) {
+  nav .wrapper {
+    flex-direction: column;
+  }
+  nav .wrapper .logo {
+    margin-top: 40px;
+    margin-left: 20px;
+    align-self: flex-start;
+  }
+  nav .wrapper .menus {
+    margin: 10px 10px 10px 0;
+    align-self: flex-end;
+    width: 220px;
+  }
+  nav .wrapper .menus li {
+    padding: 3px;
+  }
 }
 main {
   width: 60%;
