@@ -2,9 +2,32 @@
 <!--  -->
 {% block title %}Poster{%endblock%}<!--  -->
 
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="../static/css/poster.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>    
+{% endblock %}
+
+{% block script %}
+    <script type="text/javascript" src="../static/js/poster.js"></script>
+{% endblock %}
+
 {% block content %}
+
 <hr/>
-<div class="main-wrapper">
+<div class="wrapper">
+    <div class="post-box card border-light mb-3" >
+        <div class="post-title card-header">Header</div>
+        <div class="post-name card-body" style="padding: 3 0 0 20;">작성자</div>
+        <div class="post-body card-body">
+          <h5 class="card-title">Light card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        <button type="button" id="back" class="backtolist btn btn-secondary">목록으로</button>
+    </div>
 
 </div>
 {% endblock %}
