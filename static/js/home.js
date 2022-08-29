@@ -21,7 +21,9 @@ $(document).ready(function () {
         iconWrapper.append(deleteIcon);
         liWrapper.append(iconWrapper);
         ancherPoster.on("click", () => console.log("you clicked", _id));
-        setTimepostList.append(liWrapper);
+        editIcon.on("click", () => console.log("you clicked", "edit"));
+        deleteIcon.on("click", () => console.log("you clicked", "delete"));
+        postList.append(liWrapper);
       }
     },
     error: function (error) {
