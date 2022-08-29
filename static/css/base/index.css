@@ -78,6 +78,14 @@ nav .wrapper .menus li:hover {
 nav .wrapper .menus li a {
   font-weight: 600;
 }
+nav .temperal {
+  top: 0%;
+  position: fixed;
+  /* display: flex; */
+  display: none;
+  justify-content: center;
+  font-size: x-large;
+}
 @media (width <= 940px) {
   nav .wrapper {
     flex-direction: column;

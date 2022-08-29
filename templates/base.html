@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{% block title %} {% endblock %} | simple poster</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Gamja+Flower&family=Gowun+Dodum&family=Hi+Melody&family=Jua&family=Nanum+Gothic&family=Nanum+Pen+Script&family=Noto+Sans+KR&family=Noto+Serif+KR&family=Poor+Story&display=swap"
+      rel="stylesheet"
+    />
     <!-- jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- https://icons.getbootstrap.com/ 에서 필요한 아이콘 확인하고 사용하세요 <i class="xx xxxx"></i>-->
@@ -36,8 +40,29 @@
           <li><a href="/login">로그인</a></li>
         </ul>
       </div>
+      <div class="temperal">
+        <input type="radio" name="fontselect" id="hi1" value="Gamja+Flower" />
+        <label for="hi1">감자꽃</label>
+        <input type="radio" name="fontselect" id="hi2" value="Gowun+Dodum" />
+        <label for="hi2">고운도담</label>
+        <input type="radio" name="fontselect" id="hi3" value="Hi+Melody" />
+        <label for="hi3">하이멜로디</label>
+        <input type="radio" name="fontselect" id="hi4" value="Jua" />
+        <label for="hi4">주아</label>
+        <input type="radio" name="fontselect" id="hi5" value="Nanum+Gothic" />
+        <label for="hi5">나눔고딕</label>
+        <input type="radio" name="fontselect" id="hi6" value="Nanum+Pen+Script" />
+        <label for="hi6">나눔펜글씨</label>
+        <input type="radio" name="fontselect" id="hi7" value="Noto+Sans+KR" />
+        <label for="hi7">노토산스</label>
+        <input type="radio" name="fontselect" id="hi8" value="Noto+Serif+KR" />
+        <label for="hi8">노토세리프</label>
+        <input type="radio" name="fontselect" id="hi9" value="Poor+Story" />
+        <label for="hi9">가난한이야기</label>
+      </div>
     </nav>
     <main>{% block content %} {% endblock %}</main>
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
     {% block script %} {% endblock %}
   </body>
 </html>
