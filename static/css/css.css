@@ -37,8 +37,7 @@ nav .wrapper .logo .simple {
   transform: rotate(-5deg);
 }
 nav .wrapper .menus {
-  margin-top: 96px;
-  margin-right: 24px;
+  margin: 108px 20px 12px;
   display: flex;
   width: 280px;
   justify-content: space-between;
@@ -54,7 +53,7 @@ nav .wrapper .menus li:hover {
   border-bottom: 1px solid rgba(87, 87, 87, 1);
   transition: 0.5s;
 }
-@media (width <= 900px) {
+@media (width <= 940px) {
   nav .wrapper {
     flex-direction: column;
   }
