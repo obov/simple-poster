@@ -3,8 +3,17 @@
 function postSubmit() {
     const title = $("#title").val();
     const content = $("#content").val();
-    if (checkBlank(title, "title")) return;
-    if (checkBlank(content, "content")) return;
+
+    if (title==="") {
+        alert("제목을 입력해주세요");
+        $("#title").focus();
+        return;
+    }
+    if (content==="") {
+        alert("내용을 입력해주세요");
+        $("#content").focus();
+        return;
+    }
 
     const date = new Date();
     const year = date.getFullYear();
@@ -32,15 +41,3 @@ function postSubmit() {
         }
     });
 }
-
-function checkBlank(check,tag) {
-    if( check === "" ) {
-        // alert("제목을 입력해주세요")
-        $(`#${tag}`).focus();
-        $(`#help-${tag}`).removeClass("is-hidden")
-        return true;
-    } else {
-        return false;
-    }
-}
-

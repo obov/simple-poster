@@ -9,9 +9,53 @@
 <script type="text/javascript" src="../static/js/new_poster.js"></script>
 {% endblock %} {% block content %}
 <div class="wrapper">
-  <!-- <form action="/poster" accept-charset="utf-8" name="post-submit" method="post">
+    <div class="row">
+        <div class="submit-form">
+            <table class="submit-table table table-striped">
+                <thead>
+                    <tr class="submit-head">
+                        <th colspan="2">글 작성하기</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><input type="text" class="form-control" id="title" placeholder="글 제목" name="title" maxlength="50"></td>
+                    </tr>
+                    <tr>
+                        <td><textarea class="form-control" id="content" placeholder="글 내용" name="content" maxlength="2048" style="height:350px"></textarea> </td>
+                    </tr>
+                </tbody>
+            </table>
+            <button class="submit-btn btn btn-secondary" id="submit" onclick="postSubmit()">제출하기</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+
+
+<!-- <form action="/poster" accept-charset="utf-8" name="post-submit" method="post">
         <fieldset class="submit-wrapper" > -->
-  <div class="submit-wrapper">
+
+
+
+
+    <!-- <div class="post-box card border-light mb-3">
+        <div class="post-title card-header">글 작성하기</div>
+        <div class="post-name card-body" style="padding: 3 0 0 20">
+            <input class="submit-title" id="title" type="text" name="submit-title" placeholder="제목을 입력해주세요." />
+            <p id="help-title" class="help is-hidden">제목을 입력해주세요!!</p>
+        </div>
+        <div class="post-body card-body">
+            <textarea class="submit-text" id="content" type="comment" placeholder="내용을 입력해주세요."></textarea>
+            <p id="help-content" class="help is-hidden">내용을 입력해주세요!!</p>
+        </div>
+        <button class="submit-btn btn btn-secondary" id="submit" onclick="postSubmit()">제출하기</button>
+    
+    </div> -->
+
+
+  <!-- <div class="submit-wrapper">
     <br />
     <h3 class="title">글 작성하기</h3>
     <br />
@@ -21,9 +65,6 @@
     <textarea class="submit-text" id="content" type="comment" placeholder="내용을 입력해주세요."></textarea>
     <p id="help-content" class="help is-hidden">내용을 입력해주세요!!</p>
     <br />
-    <button class="submit-btn btn btn-secondary" id="submit" onclick="postSubmit()">제출하기</button>
-  </div>
+</div> -->
   <!-- </fieldset>
     </form> -->
-</div>
-{% endblock %}
