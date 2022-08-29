@@ -1,79 +1,3 @@
-body {
-  height: 150vh;
-  background-color: rgb(251, 251, 251);
-}
-a {
-  display: block;
-  color: rgb(30, 30, 30);
-  text-decoration: none;
-}
-i {
-  cursor: pointer;
-}
-nav {
-  position: relative;
-  height: 150px;
-  background-color: gainsboro;
-  box-shadow: 0px 0px 10px rgba(194, 192, 192, 0.466);
-}
-nav .wrapper {
-  display: flex;
-  justify-content: space-between;
-  width: 60%;
-  min-width: 300px;
-  margin: 0 auto;
-  height: 100%;
-}
-nav .wrapper .logo {
-  margin-top: 60px;
-  margin-left: 40px;
-  font-size: 40px;
-  cursor: pointer;
-}
-nav .wrapper .logo:hover .simple {
-  transition: 0.35s;
-  transform: rotate(0.1deg);
-}
-nav .wrapper .logo .simple {
-  transition: 0.35s;
-  display: inline-block;
-  transform: rotate(-5deg);
-}
-nav .wrapper .menus {
-  margin: 108px 20px 12px;
-  display: flex;
-  width: 280px;
-  justify-content: space-between;
-  font-size: 18px;
-}
-nav .wrapper .menus li {
-  padding: 6px;
-  cursor: pointer;
-  border-bottom: 1px solid rgba(87, 87, 87, 0);
-  transition: 0.5s;
-}
-nav .wrapper .menus li:hover {
-  border-bottom: 1px solid rgba(87, 87, 87, 1);
-  transition: 0.5s;
-}
-@media (width <= 940px) {
-  nav .wrapper {
-    flex-direction: column;
-  }
-  nav .wrapper .logo {
-    margin-top: 40px;
-    margin-left: 20px;
-    align-self: flex-start;
-  }
-  nav .wrapper .menus {
-    margin: 10px 10px 10px 0;
-    align-self: flex-end;
-    width: 220px;
-  }
-  nav .wrapper .menus li {
-    padding: 3px;
-  }
-}
 main {
   width: 60%;
   min-width: 300px;
@@ -114,7 +38,6 @@ main .poster-list li a {
   color: rgb(60, 60, 60);
   line-height: 1.4;
 }
-
 main .poster-list li div {
   padding: 2px;
   display: flex;
