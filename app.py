@@ -12,13 +12,13 @@ def home():
 
 @app.route("/poster", methods=["GET"])
 def post_get():
-
     ## validator
-    id = request.args["id"]
-    post = db.poster.find_one({"id":id})
+    # id = request.args["id"]
+    # post = db.poster.find_one({"id":id})
+    if(len(request.args)==0):
+        return render_template("new_poster.html") # @app.route('/') 에 return render_template("new_poster.html")를 하셔서 수정했습니다 - 임요한
     
 
-    return jsonify({"msg":"success"}) # @app.route('/') 에 return render_template("new_poster.html")를 하셔서 수정했습니다 - 임요한
 
 
 @app.route("/poster/submit", methods=["POST"])
