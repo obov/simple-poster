@@ -4,16 +4,16 @@ const logo = $("#logo");
 $(document).ready(function () {
   $.ajax({
     type: "GET",
-    url: "https://quote-garden.herokuapp.com/api/v3/quotes",
+    url: "/poster/list",
     data: {},
     success: function ({ data }) {
       postList.empty();
-      console.log(data);
+      console.log({ data });
       for (let i = 0; i < data.length; i++) {
-        const { quoteText, quoteAuthor, _id } = data[i];
+        const { content, title, id } = data[i];
 
-        const liWrapper = $(`<li id="poster${_id}"></li>`);
-        const ancherPoster = $(`<a href="/poster?id=${_id}">${quoteText}</a>`);
+        const liWrapper = $(`<li id="poster${id}"></li>`);
+        const ancherPoster = $(`<a href="/poster?id=${id}">${title}</a>`);
         const iconWrapper = $("<div class='icon-wrapper'></div>");
         const editIcon = $("<i class='bi bi-pencil-square'></i>");
         const deleteIcon = $("<i class='bi bi-trash3'></i>");
@@ -24,7 +24,7 @@ $(document).ready(function () {
         liWrapper.append(iconWrapper);
         postList.append(liWrapper);
 
-        ancherPoster.on("click", () => console.log("you clicked", _id));
+        ancherPoster.on("click", () => console.log("you clicked", id));
         editIcon.on("click", () => console.log("you clicked", "edit"));
         deleteIcon.on("click", () => console.log("you clicked", "delete"));
       }
