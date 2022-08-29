@@ -41,3 +41,7 @@ function postSubmit() {
         }
     });
 }
+
+function back() {
+    window.location.replace("/");
+}

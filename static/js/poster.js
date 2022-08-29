@@ -14,6 +14,11 @@ function getPost(id) {
         data: {},
         success: (response)=>{
             console.log(response["msg"]);
+
+            const [ title, username, content, date ] = response;
+            $("#post-title").append(`<p>${title}</p>`);
+            $("#post-name").append(`<p>${username}</p><p>${date}</p>`);
+            $("#post-body").append(`<p>${content}</p>`);
         }
 
     });
