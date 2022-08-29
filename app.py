@@ -6,20 +6,29 @@ db = client.simple_poster
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def home():
     return render_template("home.html")
 
-@app.route("/poster", methods=["GET"])
-def post_get():
-    ## validator
-    # id = request.args["id"]
-    # post = db.poster.find_one({"id":id})
-    if(len(request.args)==0):
-        return render_template("new_poster.html") # @app.route('/') 에 return render_template("new_poster.html")를 하셔서 수정했습니다 - 임요한
-    else:
-        return render_template("poster.html")
 
+@app.route("/poster")
+def poster():
+    return render_template("poster.html")
+        
+
+@app.route("/post_write")
+def post_write():
+    return render_template("new_poster.html")
+
+
+@app.route("/poster/view", methods=["GET"])
+def post_view():
+        ## validator
+    id = request.args["id"]
+    print(id)
+    # post = db.poster.find_one({"id":id})
+    return jsonify({"msg":"success"})
 
 
 @app.route("/poster/submit", methods=["POST"])

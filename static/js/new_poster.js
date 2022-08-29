@@ -1,6 +1,6 @@
 
 
-function posterForm() {
+function postSubmit() {
     const title = $("#title").val();
     const content = $("#content").val();
     if (checkBlank(title, "title")) return;
@@ -28,6 +28,7 @@ function posterForm() {
         },
         success: (response)=>{
             console.log(response["msg"]);
+            window.location.replace("/");
         }
     });
 }
