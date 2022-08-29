@@ -8,11 +8,11 @@ db = client.simple_poster
 app = Flask(__name__)
 @app.route('/')
 def home():
-    return render_template("home.html")
+    return render_template("new_poster.html")
 
 
 @app.route("/poster/submit", methods=["POST"])
-def posterForm():
+def post_submit():
     ## validator
 
     # username_receive = request.form["username_give"]
@@ -34,6 +34,15 @@ def posterForm():
     return jsonify({"msg":"success"})
 
 
+@app.route("/poster", methods=["GET"])
+def post_get():
+
+    ## validator
+    id = request.args["id"]    
+    post = db.poster.find_one({"id":id})
+    
+
+    return jsonify({"msg":"success"})
 
 
 if __name__ == '__main__':
