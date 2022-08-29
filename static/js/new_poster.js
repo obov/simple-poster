@@ -25,8 +25,11 @@ function posterForm() {
             content_give: content,
             time_give: time
             // username
+        },
+        success: (response)=>{
+            console.log(response["msg"]);
         }
-    })
+    });
 }
 
 function checkBlank(check,tag) {
@@ -40,12 +43,3 @@ function checkBlank(check,tag) {
     }
 }
 
-function testAlert() {
-    alert("BAAAM")
-    console.log("!!")
-
-
-    
-
-    console.log(time)
-}
