@@ -88,7 +88,7 @@ main .poster-list {
   width: 90%;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 24px;
 }
 main .poster-list li {
@@ -116,6 +116,7 @@ main .poster-list li a {
 
 main .poster-list li div {
   padding: 2px;
+  display: flex;
 }
 main .poster-list li div i {
   padding: 5px;
@@ -130,4 +131,15 @@ main .poster-list li:hover div i {
 }
 main .poster-list li:hover div i:hover {
   color: rgb(15, 15, 15);
+}
+@media (width <= 940px) {
+  main .poster-list li {
+    padding: 0 5px;
+  }
+  main .poster-list li div {
+    flex-direction: column;
+  }
+  main .poster-list li div i {
+    margin: 0;
+  }
 }
