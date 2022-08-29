@@ -19,7 +19,7 @@ function posterForm() {
 
     $.ajax({
         type: "POST",
-        url: "/poster",
+        url: "/poster/submit",
         data: {
             title_give: title,
             content_give: content,

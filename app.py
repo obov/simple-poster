@@ -8,10 +8,10 @@ db = client.simple_poster
 app = Flask(__name__)
 @app.route('/')
 def home():
-    return render_template("new_poster.html")
+    return render_template("home.html")
 
 
-@app.route("/poster", methods=["POST"])
+@app.route("/poster/submit", methods=["POST"])
 def posterForm():
     ## validator
 
