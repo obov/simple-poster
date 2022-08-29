@@ -1,11 +1,14 @@
 body {
-  height: 100vh;
+  height: 150vh;
   background-color: rgb(251, 251, 251);
 }
 a {
   display: block;
   color: rgb(30, 30, 30);
   text-decoration: none;
+}
+i {
+  cursor: pointer;
 }
 nav {
   position: relative;
@@ -81,19 +84,50 @@ main {
   padding-top: 80px;
 }
 main .poster-list {
+  margin: 0 auto;
+  width: 90%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 15px;
+  align-items: flex-start;
+  gap: 24px;
 }
 main .poster-list li {
-  width: 85%;
-  min-width: 200px;
-  cursor: pointer;
+  width: 95%;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   box-shadow: 2px 1px 5px rgba(182, 181, 181, 0.637);
-  padding: 10px;
-  transition: 0.35s;
 }
 main .poster-list li:hover {
   background-color: rgb(250, 250, 250);
+}
+main .poster-list li a {
+  flex: 3;
+  display: block;
+  width: 80%;
+  cursor: pointer;
+  padding: 10px;
+  transition: 0.35s;
+  font-size: x-large;
+  color: rgb(60, 60, 60);
+  line-height: 1.4;
+}
+
+main .poster-list li div {
+  padding: 2px;
+}
+main .poster-list li div i {
+  padding: 5px;
+  display: inline-block;
+  font-size: 22px;
+  color: white;
+  transition: 0.35s;
+  margin-right: 5px;
+}
+main .poster-list li:hover div i {
+  color: rgb(180, 180, 180);
+}
+main .poster-list li:hover div i:hover {
+  color: rgb(15, 15, 15);
 }
