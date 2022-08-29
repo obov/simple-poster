@@ -12,9 +12,10 @@
   background-color: rgb(187, 187, 187);
   text-align: center;
 }
-.btn {
+.btns {
   display: flex;
   justify-content: center;
+  /* cursor pointer 가 너무 넓게 적용되어 이름을 바꿨습니다 btn -> btns */
 }
 .submit-btn {
   /* align-self: center; */
