@@ -49,14 +49,14 @@ nav .wrapper .logo {
   font-size: 40px;
   cursor: pointer;
 }
-nav .wrapper .logo:hover .simple {
-  transition: 0.35s;
-  transform: rotate(0.1deg);
-}
 nav .wrapper .logo .simple {
   transition: 0.35s;
   display: inline-block;
   transform: rotate(-5deg);
+}
+nav .wrapper .logo:hover .simple {
+  transition: 0.35s;
+  transform: rotate(0.1deg);
 }
 nav .wrapper .menus {
   margin: 108px 20px 12px;
