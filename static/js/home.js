@@ -21,11 +21,3 @@ $(document).ready(function () {
     },
   });
 });
-// spa 적용 test
-window.onpopstate = function (e) {
-  console.log(`${JSON.stringify(e.state)} | ${location.origin} | ${location.pathname}`);
-};
-
-const state = { page_id: 1, data: "test" };
-const route = (url) => history.pushState(state, null, location.origin + url);
-logo.on("click", route("/"));
