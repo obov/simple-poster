@@ -2,6 +2,7 @@
     width: 60%;
     min-width: 300px;
     margin: 10px auto 0 auto;
+    box-shadow: 0px 0px 12px rgba(131, 131, 131, 0.322);
 }
 .submit-table {
     text-align: center;
@@ -11,10 +12,20 @@
     background-color: rgb(187, 187, 187);
     text-align: center;
 }
+.btn {
+    display: flex;
+    justify-content: center;
+}
+.submit-btn {
+    /* align-self: center; */
+    margin-bottom: 10px;
+    padding: 10px 50px 10px 50px;
+}
 
 .post-box {
   width: 60%;
   margin: 10px auto 0 auto;
+  box-shadow: 0px 0px 12px rgba(131, 131, 131, 0.322);
 }
 .post-name {
   height: 30;
