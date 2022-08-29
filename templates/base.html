@@ -8,6 +8,13 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/reset.css') }}" />
     <link rel="stylesheet" href="{{ url_for('static', filename='css/css.css') }}" />
+
+    {% block css %}
+    {% endblock %}
+
+
+    {% block script %}
+    {% endblock %}
   </head>
   <body>
     <nav>
