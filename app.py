@@ -1,4 +1,4 @@
-from flask import Flask, render_template, jsonify, request,make_response
+from flask import Flask, render_template
 from poster import poster_bp
 
 app = Flask(__name__)
