@@ -15,15 +15,6 @@ function postSubmit() {
         return;
     }
 
-    const date = new Date();
-    const year = date.getFullYear();
-    const month = date.getMonth() +1;
-    const day = date.getDate();
-    const hour = date.getHours();
-    const minute = date.getMinutes();
-    
-    const time = `${hour} ${minute} ${month} ${day} ${year}`
-
     /* username & token validator */
 
     $.ajax({
@@ -32,7 +23,6 @@ function postSubmit() {
         data: {
             title_give: title,
             content_give: content,
-            time_give: time
             // username
         },
         success: (response)=>{
