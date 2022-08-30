@@ -1,14 +1,18 @@
 from flask import Blueprint, render_template, jsonify, request
 from pymongo import MongoClient
+from dotenv import load_dotenv
 
 import time
 import datetime
+import os
 
 from fakedb import fake_db # 임시 db파일 입니다
 
+load_dotenv()
+URL = os.environ.get("MongoDB_URL")
 
-client = MongoClient("mongodb+srv://test:sparta@cluster0.g2d328l.mongodb.net/?retryWrites=true&w=majority", 
-                            tls=True, tlsAllowInvalidCertificates=True) 
+
+client = MongoClient(URL, tls=True, tlsAllowInvalidCertificates=True) 
 db = client.simple_poster
 
 poster_bp = Blueprint("poster", __name__)
