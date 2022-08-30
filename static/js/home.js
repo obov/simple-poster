@@ -2,7 +2,7 @@ const postList = $("#posterList");
 const logo = $("#logo");
 
 const listingData = (tagToAppend, data) => {
-  for (let i = data.length-1; i > -1 ; i--) {
+  for (let i = data.length-1; i > -1 ; i--) {    // 홈 리스트 최신순으로 다시 정렬했어요. -세욱-
     const { content, title, id } = data[i];
     const liWrapper = $(`<li id="poster${id}"></li>`);
     const ancherPoster = $(`<a href="/poster?id=${id}">${title}</a>`);
