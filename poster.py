@@ -19,6 +19,7 @@ poster_bp = Blueprint("poster", __name__)
 def get_poster_list():
     # time.sleep(3)
     posters = list(db.poster.find({},{"_id":False}))
+    posters.reverse()
     return jsonify({"data":posters})
 
 
