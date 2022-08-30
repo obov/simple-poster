@@ -2,12 +2,12 @@ const postList = $("#posterList");
 const logo = $("#logo");
 
 const tag = (tagName) => $(`<${tagName}></${tagName}>`);
-
 const listingData = (tagToAppend, data) => {
   for (let i = 0; i < data.length; i++) {
     const { content, title, id } = data[i];
-    const qs = encodeURIComponent(`id=${id}`);
+
     const liWrapper = tag("li").attr("id", "poster" + id);
+    const qs = encodeURIComponent(`id=${id}`);
     const ancherPoster = tag("a")
       .attr("href", "/poster?" + qs)
       .text(title);
@@ -15,10 +15,11 @@ const listingData = (tagToAppend, data) => {
     const editIcon = tag("i").addClass("bi bi-pencil-square");
     const deleteIcon = tag("i").addClass("bi bi-trash3");
 
-    liWrapper.append(ancherPoster);
     iconWrapper.append(editIcon);
     iconWrapper.append(deleteIcon);
     liWrapper.append(iconWrapper);
+    liWrapper.append(ancherPoster);
+
     tagToAppend.append(liWrapper);
 
     editIcon.on("click", () => console.log("you clicked", "edit"));
