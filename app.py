@@ -1,6 +1,10 @@
 from flask import Flask, render_template, jsonify, request,make_response
 from pymongo import MongoClient
+from dotenv import load_dotenv
+import os 
 
+load_dotenv()
+mySecret = os.environ.get('MySecret')
 
 from poster import poster_bp
 
@@ -16,6 +20,7 @@ app.register_blueprint(poster_bp, url_prefix="/poster")
 
 @app.route('/')
 def home():
+    print(mySecret)
     return render_template("home.html")
 
 
