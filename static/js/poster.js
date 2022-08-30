@@ -1,12 +1,11 @@
 $(()=>{
     // validator
-    const id = window.document.URL.split("?id=")[1];
+    const qs = window.location.search.substring(1);
+    const id = decodeURIComponent(qs).split("=")[1];
     getPost(id);
 });
 
 function getPost(id) {
-    
-    console.log(id);
 
     $.ajax({
         type: "GET",

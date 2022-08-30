@@ -4,8 +4,9 @@ const logo = $("#logo");
 const listingData = (tagToAppend, data) => {
   for (let i = 0; i < data.length; i++) {
     const { content, title, id } = data[i];
+    const qs = encodeURIComponent(`id=${id}`);
     const liWrapper = $(`<li id="poster${id}"></li>`);
-    const ancherPoster = $(`<a href="/poster?id=${id}">${title}</a>`);
+    const ancherPoster = $(`<a href="/poster?${qs}">${title}</a>`);
     const iconWrapper = $("<div class='icon-wrapper'></div>");
     const editIcon = $("<i class='bi bi-pencil-square'></i>");
     const deleteIcon = $("<i class='bi bi-trash3'></i>");
