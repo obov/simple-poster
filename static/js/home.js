@@ -2,7 +2,7 @@ const postList = $("#posterList");
 const logo = $("#logo");
 
 const listingData = (tagToAppend, data) => {
-  for (let i = 0; i < data.length; i++) {
+  for (let i = data.length-1; i > -1 ; i--) {
     const { content, title, id } = data[i];
     const liWrapper = $(`<li id="poster${id}"></li>`);
     const ancherPoster = $(`<a href="/poster?id=${id}">${title}</a>`);
