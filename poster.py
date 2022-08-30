@@ -1,14 +1,20 @@
 from flask import Blueprint, render_template, jsonify, request
 from pymongo import MongoClient
 
-import time
+from dotenv import load_dotenv
+import os 
+
+load_dotenv()
+DB_URL = os.environ.get('DB_URL')
+
+
+# import time
 import datetime
 
 from fakedb import fake_db # 임시 db파일 입니다
 
 
-client = MongoClient("mongodb+srv://test:sparta@cluster0.g2d328l.mongodb.net/?retryWrites=true&w=majority", 
-                            tls=True, tlsAllowInvalidCertificates=True) 
+client = MongoClient(DB_URL, tls=True, tlsAllowInvalidCertificates=True) 
 db = client.simple_poster
 
 poster_bp = Blueprint("poster", __name__)
@@ -16,8 +22,9 @@ poster_bp = Blueprint("poster", __name__)
 
 @poster_bp.route('/list',methods=['GET'])
 def get_poster_list():
-    time.sleep(3)
-    return jsonify({"data":fake_db["poster"]})
+    # time.sleep(3)
+    posters = list(db.poster.find({},{"_id":False}))
+    return jsonify({"data":posters})
 
 
 @poster_bp.route("/")
