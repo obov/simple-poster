@@ -15,9 +15,6 @@ function getPost(id) {
         success: (response)=>{
             const { title, username, content, time } = response;
 
-            console.log(title)
-            console.log(content)
-            console.log(time)
             $("#title").append(`<p>${title}</p>`);
             $("#name").append(`<p>작성자</p><span>${time}</span>`);
             $("#content").append(`<p>${content}</p>`);
