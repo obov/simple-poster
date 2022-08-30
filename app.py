@@ -2,6 +2,7 @@ from flask import Flask, render_template, jsonify, request,make_response
 from pymongo import MongoClient
 from fakedb import fake_db # 임시 db파일 입니다
 import time
+import datetime
 client = MongoClient('URL')
 db = client.simple_poster
 
@@ -44,14 +45,14 @@ def post_submit():
     # username_receive = request.form["username_give"]
     title_receive = request.form["title_give"]
     content_receive = request.form["content_give"]
-    time_receive = request.form["time_give"]
+    time = str(datetime.datetime.now()).split(".")[0]
 
     doc = {
         # "id": id,
         # "username": username_receive,
         "title": title_receive,
         "content": content_receive,
-        "time": time_receive
+        "time": time,
     }
 
     print(doc)
