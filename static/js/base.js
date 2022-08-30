@@ -13,6 +13,7 @@ window.onpopstate = function (event) {
   location.reload();
 };
 $("#test").on("click", function () {
+  document.title = "test";
   history.pushState(null, "", location.origin + "/poster");
   $("main").load("/poster .wrapper", console.log("test success"));
 });
