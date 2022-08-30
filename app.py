@@ -1,6 +1,7 @@
 from flask import Flask, render_template, jsonify, request,make_response
 from pymongo import MongoClient
 from fakedb import fake_db # 임시 db파일 입니다
+import time
 client = MongoClient('URL')
 db = client.simple_poster
 
@@ -13,6 +14,7 @@ def home():
 
 @app.route('/poster/list',methods=['GET'])
 def get_poster_list():
+    time.sleep(3)
     return jsonify({"data":fake_db["poster"]})
 
 @app.route("/poster")
