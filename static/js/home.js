@@ -17,8 +17,8 @@ const listingData = (tagToAppend, data) => {
 
     iconWrapper.append(editIcon);
     iconWrapper.append(deleteIcon);
-    liWrapper.append(iconWrapper);
     liWrapper.append(ancherPoster);
+    liWrapper.append(iconWrapper);
 
     tagToAppend.append(liWrapper);
 
