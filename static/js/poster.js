@@ -13,12 +13,14 @@ function getPost(id) {
         url: `/poster/view?id=${id}`,
         data: {},
         success: (response)=>{
-            console.log(response["msg"]);
+            const { title, username, content, time } = response;
 
-            const [ title, username, content, date ] = response;
-            $("#post-title").append(`<p>${title}</p>`);
-            $("#post-name").append(`<p>${username}</p><p>${date}</p>`);
-            $("#post-body").append(`<p>${content}</p>`);
+            console.log(title)
+            console.log(content)
+            console.log(time)
+            $("#title").append(`<p>${title}</p>`);
+            $("#name").append(`<p>작성자</p><span>${time}</span>`);
+            $("#content").append(`<p>${content}</p>`);
         }
 
     });

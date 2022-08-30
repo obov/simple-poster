@@ -33,10 +33,10 @@ def post_write():
 @poster_bp.route("/view", methods=["GET"])
 def post_view():
         ## validator
-    id = request.args["id"]
-    print(id)
-    # post = db.poster.find_one({"id":id})
-    return jsonify({"msg":"success"})
+    id = int(request.args["id"])    
+    post = db.poster.find_one({"id": id}, {"_id": False})
+
+    return jsonify(post)
 
 
 @poster_bp.route("/submit", methods=["POST"])
