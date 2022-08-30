@@ -58,6 +58,7 @@ main .poster-list li a {
   color: rgb(160, 160, 160);
   transition: 0.35s;
   line-height: 1.4;
+  word-break: break-all;
 }
 main .poster-list li a:hover {
   color: rgb(45, 45, 45);
@@ -81,6 +82,11 @@ main .poster-list li:hover div i:hover {
   color: rgb(15, 15, 15);
 }
 @media (width <= 940px) {
+  main .content-title h1 {
+    font-size: 16px;
+    left: 20px;
+    padding: 0 6px;
+  }
   main .poster-list li {
     padding: 0 5px;
   }
