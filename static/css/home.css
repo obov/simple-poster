@@ -40,10 +40,12 @@ main .poster-list li {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  box-shadow: 2px 1px 5px rgba(182, 181, 181, 0.637);
+  box-shadow: 2px 1px 5px rgba(180, 180, 180, 0.637);
+  transition: 0.35s;
 }
 main .poster-list li:hover {
   background-color: rgb(252, 252, 252);
+  box-shadow: 2px 1px 5px rgba(160, 160, 160, 1);
 }
 main .poster-list li a {
   flex: 3;
