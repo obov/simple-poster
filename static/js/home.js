@@ -23,18 +23,18 @@ const listingData = (tagToAppend, data) => {
 };
 
 $(document).ready(function () {
-  const dataToShow = localStorage.getItem("data");
-  if (dataToShow) {
-    const dataParsed = JSON.parse(dataToShow);
-    listingData(postList, dataParsed);
-  }
+  // const dataToShow = localStorage.getItem("data");
+  // if (dataToShow !== null) {
+  //   const dataParsed = JSON.parse(dataToShow);
+  //   listingData(postList, dataParsed);
+  // }
   $.ajax({
     type: "GET",
     url: "/poster/list",
     data: {},
     success: function ({ data }) {
       postList.empty();
-      console.log({ data });
+      console.log(data);
       localStorage.setItem("data", JSON.stringify(data));
       listingData(postList, data);
     },

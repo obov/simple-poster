@@ -15,7 +15,6 @@ db = client.simple_poster
 
 poster_bp = Blueprint("poster", __name__)
 
-
 @poster_bp.route('/list',methods=['GET'])
 def get_poster_list():
     # time.sleep(3)
