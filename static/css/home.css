@@ -21,7 +21,7 @@ main .content-title h1 {
   font-size: 22px;
   background-color: rgb(255, 255, 255);
   padding: 0 12px;
-  color: rgb(200, 200, 200);
+  color: rgb(216, 216, 216);
   cursor: none;
   user-select: none;
 }
@@ -43,7 +43,7 @@ main .poster-list li {
   box-shadow: 2px 1px 5px rgba(182, 181, 181, 0.637);
 }
 main .poster-list li:hover {
-  background-color: rgb(250, 250, 250);
+  background-color: rgb(252, 252, 252);
 }
 main .poster-list li a {
   flex: 3;
@@ -53,8 +53,12 @@ main .poster-list li a {
   padding: 10px;
   transition: 0.35s;
   font-size: x-large;
-  color: rgb(60, 60, 60);
+  color: rgb(160, 160, 160);
+  transition: 0.35s;
   line-height: 1.4;
+}
+main .poster-list li a:hover {
+  color: rgb(45, 45, 45);
 }
 main .poster-list li div {
   padding: 2px;
