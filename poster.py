@@ -48,18 +48,18 @@ def post_submit():
     title_receive = request.form["title_give"]
     content_receive = request.form["content_give"]
     time = str(datetime.datetime.now()).split(".")[0]
-    idx = db.index.find_one({}, {"_id":False})["index"]
+    id = db.index.find_one({}, {"_id":False})["index"]
 
     doc = {
-        "idx": idx,
+        "id": id,
         # "username": username_receive,
         "title": title_receive,
         "content": content_receive,
         "time": time,
     }
 
-    idx += 1
-    db.index.update_one({}, {"$set": {"index": idx}})
+    id += 1
+    db.index.update_one({}, {"$set": {"index": id}})
 
     print(doc)
     db.poster.insert_one(doc)
