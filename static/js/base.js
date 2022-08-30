@@ -8,3 +8,11 @@ $('input[name="fontselect"]').change(function () {
     }
   });
 });
+window.onpopstate = function (event) {
+  // alert(`location: ${document.location}, state: ${JSON.stringify(event.state)}`);
+  location.reload();
+};
+$("#test").on("click", function () {
+  history.pushState(null, "", location.origin + "/poster");
+  $("main").load("/poster .wrapper", console.log("test success"));
+});
