@@ -1,0 +1,32 @@
+{% extends "base.html"%}
+<!--  -->
+{% block title %}Home{%endblock%}
+<!--  -->
+{% block css %}<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/home.css') }}"
+/>{%endblock%}
+<!--  -->
+{% block content %}
+<div>
+  <h1 style="text-align: center; color: aliceblue; font-weight: bold">
+    LOGIN IN
+  </h1>
+  <p>
+    아이디&nbsp;&nbsp;&nbsp;:<input id="userNname" type="text" /><label
+      id="name_trip"
+    ></label>
+  </p>
+  <p>
+    비밀번호:<input id="userPassword" type="password" /><label
+      id="password_trip"
+    ></label>
+  </p>
+  <div style="text-align: center; margin-top: 30px"></div>
+  <input type="submit" id="login" class="button" value="로그인" />
+</div>
+{% endblock %}
+<!--  -->
+{% block script %}
+<script src="{{ url_for('static', filename='js/member.js') }}"></script>
+{% endblock %}

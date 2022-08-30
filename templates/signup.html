@@ -1,0 +1,27 @@
+{% extends "base.html"%}
+<!--  -->
+{% block title %}Home{%endblock%}
+<!--  -->
+{% block css %}<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/home.css') }}"
+/>{%endblock%}
+<!--  -->
+{% block content %}
+<section>
+  ID<br />
+  <input type="text" name="user_ID" placeholder="아이디 입력" />
+  <br />
+  password<br />
+  <input type="password" name="user_PW1" value="" /><br />
+  confirm<br />
+  <input type="password" name="user_PW2" value="" />
+  <br />
+  <input type="submit" id="submit" name="" value="제출" />
+</section>
+
+{% endblock %}
+<!--  -->
+{% block script %}
+<script src="{{ url_for('static', filename='js/member.js') }}"></script>
+{% endblock %}
