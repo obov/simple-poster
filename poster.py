@@ -1,20 +1,16 @@
 from flask import Blueprint, render_template, jsonify, request
 from pymongo import MongoClient
-
 from dotenv import load_dotenv
-import os 
-
-load_dotenv()
-DB_URL = os.environ.get('DB_URL')
-
 
 # import time
 import datetime
+import os
 
-from fakedb import fake_db # 임시 db파일 입니다
 
+load_dotenv()
+URL = os.environ.get("MongoDB_URL")
 
-client = MongoClient(DB_URL, tls=True, tlsAllowInvalidCertificates=True) 
+client = MongoClient(URL, tls=True, tlsAllowInvalidCertificates=True) 
 db = client.simple_poster
 
 poster_bp = Blueprint("poster", __name__)
@@ -40,10 +36,10 @@ def post_write():
 @poster_bp.route("/view", methods=["GET"])
 def post_view():
         ## validator
-    id = request.args["id"]
-    print(id)
-    # post = db.poster.find_one({"id":id})
-    return jsonify({"msg":"success"})
+    id = int(request.args["id"])    
+    post = db.poster.find_one({"id": id}, {"_id": False})
+
+    return jsonify(post)
 
 
 @poster_bp.route("/submit", methods=["POST"])
