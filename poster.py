@@ -1,9 +1,15 @@
 from flask import Blueprint, render_template, jsonify, request
+from pymongo import MongoClient
 
 import time
 import datetime
 
 from fakedb import fake_db # 임시 db파일 입니다
+
+
+client = MongoClient("mongodb+srv://test:sparta@cluster0.g2d328l.mongodb.net/?retryWrites=true&w=majority", 
+                            tls=True, tlsAllowInvalidCertificates=True) 
+db = client.simple_poster
 
 poster_bp = Blueprint("poster", __name__)
 
@@ -42,16 +48,20 @@ def post_submit():
     title_receive = request.form["title_give"]
     content_receive = request.form["content_give"]
     time = str(datetime.datetime.now()).split(".")[0]
+    id = db.index.find_one({}, {"_id":False})["index"]
 
     doc = {
-        # "id": id,
+        "id": id,
         # "username": username_receive,
         "title": title_receive,
         "content": content_receive,
         "time": time,
     }
 
+    id += 1
+    db.index.update_one({}, {"$set": {"index": id}})
+
     print(doc)
-    # db.poster.insert_one()
+    db.poster.insert_one(doc)
 
     return jsonify({"msg":"success"})
