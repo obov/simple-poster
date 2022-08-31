@@ -25,7 +25,9 @@ def get_list():
 @poster_bp.route("/edit",methods=['GET','POST'])
 def get_edit():
     if request.method == "GET" : 
-        return render_template("edit.html")
+        id = int(request.args["id"]) 
+        print(id)
+        return render_template("edit.html",title="title",content="content")
     else:
         title = request.form["title"]
         content = request.form.get("content")

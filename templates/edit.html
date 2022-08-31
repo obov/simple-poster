@@ -10,17 +10,12 @@
     <div class="input-wrapper">
       <h1>글 수정하기</h1>
       <div class="title-wrapper">
-        <input class="form-control" id="title" required placeholder="글 제목" maxlength="50" />
+        <input class="form-control" id="title" required placeholder="글 제목" maxlength="50" value="{{title}}" />
       </div>
       <div class="content-wrapper">
-        <textarea
-          class="form-control"
-          id="content"
-          required
-          rows="15"
-          placeholder="글 내용"
-          maxlength="2048"
-        ></textarea>
+        <textarea class="form-control" id="content" required rows="15" placeholder="글 내용" maxlength="2048">
+{{content}}
+        </textarea>
       </div>
     </div>
     <div>
