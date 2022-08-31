@@ -100,6 +100,16 @@ main .poster-list li:hover .icon-wrapper i {
   min-height: 22px;
 }
 main .delete-box {
+  position: fixed;
+  width: 300px;
+  height: 200px;
+  background-color: rgb(240, 240, 240);
+  border-radius: 20px;
+  box-shadow: 0px 6px 12px rgb(180, 180, 180);
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  display: none;
 }
 @media (width <= 940px) {
   main .content-title h1 {

@@ -26,8 +26,9 @@ const listingData = (tagToAppend, data) => {
 
     tagToAppend.append(liWrapper);
 
-    editIcon.on("click", () => console.log("you clicked", "edit"));
-    deleteIcon.on("click", () => console.log("you clicked", "delete"));
+    divDelete.on("click", function () {
+      $("#deleteBox").css("display", "block");
+    });
   }
 };
 
