@@ -8,36 +8,58 @@ const delContent = $("#delboxContent");
 let idToDelete;
 
 const tag = (tagName) => $(`<${tagName}></${tagName}>`);
-const listingData = (tagToAppend, data) => {
+const deleteBoxShow = function (id, title) {
+  idToDelete = id;
+  delContent.text(title);
+  deleteBox.css("display", "block");
+};
+const listingData = (tagToBeAppended, data) => {
+  console.time("listing time");
+  let tagsToAppend = "";
   for (let i = 0; i < data.length; i++) {
     const { content, title, id } = data[i];
 
-    const liWrapper = tag("li").attr("id", "poster" + id);
-    const qs = encodeURIComponent(`id=${id}`);
-    const ancherPoster = tag("a")
-      .attr("href", "/poster?" + qs)
-      .text(title);
-    const ancherEdit = tag("a").attr("href", "/poster/edit?id=" + id);
-    const divDelete = tag("div").addClass("del");
-    const editIcon = tag("i").addClass("bi bi-pencil-square");
-    const iconWrapper = tag("div").addClass("icon-wrapper");
-    const deleteIcon = tag("i").addClass("bi bi-trash3");
+    tagsToAppend += `
+    <li id="poster${id}">
+      <a href="/poster?id=${id}">${title}</a>
+      <div class="icon-wrapper">
+        <a href="/poster/edit?id=${id}">
+          <i class="bi bi-pencil-square"></i>
+        </a>
+        <div class="del" onclick="deleteBoxShow(${id},'${title}')">
+          <i class="bi bi-trash3"></i>
+        </div>
+      </div>
+    </li>
+    `;
+    // const liWrapper = tag("li").attr("id", "poster" + id);
+    // const qs = encodeURIComponent(`id=${id}`);
+    // const ancherPoster = tag("a")
+    //   .attr("href", "/poster?" + qs)
+    //   .text(title);
+    // const ancherEdit = tag("a").attr("href", "/poster/edit?id=" + id);
+    // const divDelete = tag("div").addClass("del");
+    // const editIcon = tag("i").addClass("bi bi-pencil-square");
+    // const iconWrapper = tag("div").addClass("icon-wrapper");
+    // const deleteIcon = tag("i").addClass("bi bi-trash3");
 
-    ancherEdit.append(editIcon);
-    divDelete.append(deleteIcon);
-    iconWrapper.append(ancherEdit);
-    iconWrapper.append(divDelete);
-    liWrapper.append(ancherPoster);
-    liWrapper.append(iconWrapper);
+    // ancherEdit.append(editIcon);
+    // divDelete.append(deleteIcon);
+    // iconWrapper.append(ancherEdit);
+    // iconWrapper.append(divDelete);
+    // liWrapper.append(ancherPoster);
+    // liWrapper.append(iconWrapper);
 
-    tagToAppend.append(liWrapper);
+    // tagToBeAppended.append(liWrapper);
 
-    divDelete.on("click", function () {
-      idToDelete = id;
-      delContent.text(title);
-      deleteBox.css("display", "block");
-    });
+    // divDelete.on("click", function () {
+    //   idToDelete = id;
+    //   delContent.text(title);
+    //   deleteBox.css("display", "block");
+    // });
   }
+  tagToBeAppended.html(tagsToAppend);
+  console.timeEnd("listing time");
 };
 
 $(document).ready(function () {

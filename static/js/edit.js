@@ -4,11 +4,6 @@
 //   $("main").load("/edit .wrapper", console.log("test success"));
 // });
 
-// id값 가져오기
-// console.log("window.location.search : ", window.location.search);
-// const qs = window.location.search.substring(1);
-// console.log("qs : ", qs);
-// // const id = decodeURIComponent(qs).split("=")[1];
 const id = window.location.search.split("=")[1];
 
 const form = $("#editForm");
