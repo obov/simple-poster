@@ -69,7 +69,7 @@ main .poster-list li div {
   padding: 2px;
   display: flex;
 }
-main .poster-list li div i {
+main .poster-list li div a {
   padding: 5px;
   display: inline-block;
   font-size: 22px;
@@ -77,10 +77,10 @@ main .poster-list li div i {
   transition: 0.35s;
   margin-right: 5px;
 }
-main .poster-list li:hover div i {
+main .poster-list li:hover div a {
   color: rgb(180, 180, 180);
 }
-main .poster-list li:hover div i:hover {
+main .poster-list li:hover div a:hover {
   color: rgb(15, 15, 15);
 }
 @media (width <= 940px) {

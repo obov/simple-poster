@@ -16,12 +16,15 @@ db = client.simple_poster
 poster_bp = Blueprint("poster", __name__)
 
 @poster_bp.route('/list',methods=['GET'])
-def get_poster_list():
+def get_list():
     # time.sleep(3)
     posters = list(db.poster.find({},{"_id":False}))
     posters.reverse()
     return jsonify({"data":posters})
 
+@poster_bp.route("/edit",methods=['GET'])
+def get_edit():
+    return render_template("edit.html")
 
 @poster_bp.route("/")
 def poster():
@@ -31,6 +34,7 @@ def poster():
 @poster_bp.route("/write")
 def post_write():
     return render_template("new_poster.html")
+
 
 
 @poster_bp.route("/view", methods=["GET"])
