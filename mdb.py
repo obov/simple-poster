@@ -1,20 +1,50 @@
-import pymongo
+
 import json
+import os
+
 from bson import json_util
+from pymongo import MongoClient
+from flask import Blueprint, request, jsonify
+from dotenv import load_dotenv
 
-myclient = pymongo.MongoClient("mongodb://localhost:27017/")
-mydb = myclient["db"]
-mycol = mydb["user"]
+load_dotenv()
+URL = os.environ.get("MongoDB_URL")
+
+client = MongoClient(URL, tls=True, tlsAllowInvalidCertificates=True)
+db = client.simple_poster
+# mydb = client["simple_poster"]
+# mycol = mydb["user"]
+
+user_bp = Blueprint("user", __name__)
 
 
-def register(id,password):
-  mydict = { "id":id, "pass": password }
-  x = mycol.insert_one(mydict) 
-  print(x.inserted_id)
-  return "ddd"
-  
+@user_bp.route("/register", methods=["POST"])
+def register():
+  id = request.form["id"]
+  password = request.form["password"]
 
-def login(id,password):
-  x = mycol.find_one({"id":id,"pass":password})
-  json_doc = json.dumps(x, default=json_util.default)
-  return json_doc
+  mydict = {
+    "username": id,
+    "password": password
+  }
+  db.user.insert_one(mydict)
+
+  return jsonify({"msg": "success"})
+
+#123
+#qwe
+
+
+@user_bp.route("/login", methods=["POST"])
+def login():
+  username = request.form["username"]
+  password = request.form["password"]
+  print("!!!!!")
+
+  user = db.user.find_one({"username": username, "password": password}, {"_id": False})
+  print(user)
+
+  if user is not None:
+    return jsonify({"msg": "success"})
+  else:
+    return jsonify({"msg": "fail"})
