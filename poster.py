@@ -22,9 +22,13 @@ def get_list():
     posters.reverse()
     return jsonify({"data":posters})
 
-@poster_bp.route("/edit",methods=['GET'])
+@poster_bp.route("/edit",methods=['GET','POST'])
 def get_edit():
-    return render_template("edit.html")
+    if request.method == "GET" : 
+        return render_template("edit.html")
+    else:
+        print("post")
+        return {"msg" : "post"}
 
 @poster_bp.route("/")
 def poster():
