@@ -5,8 +5,11 @@
 // });
 
 // id값 가져오기
-const qs = window.location.search.substring(1);
-const id = decodeURIComponent(qs).split("=")[1];
+// console.log("window.location.search : ", window.location.search);
+// const qs = window.location.search.substring(1);
+// console.log("qs : ", qs);
+// // const id = decodeURIComponent(qs).split("=")[1];
+const id = window.location.search.split("=")[1];
 
 const form = $("#editForm");
 const title = $("#title");
@@ -16,8 +19,8 @@ form.on("submit", function (event) {
   event.preventDefault();
   $.ajax({
     type: "POST",
-    url: `/poster/edit?${id}`,
-    data: { title: title.val(), content: content.val() },
+    url: `/poster/edit`,
+    data: { id, title: title.val(), content: content.val() },
     success: function ({ msg }) {
       console.log("msg : ", msg);
     },

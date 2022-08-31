@@ -61,9 +61,10 @@ def get_edit():
         content = post["content"]
         return render_template("edit.html",title=title,content=content)
     else:
-        title = request.form["title"]
+        id = request.form.get("id")
+        title = request.form.get("title")
         content = request.form.get("content")
-        print("title : ",title)
+        
         return {"msg" : "post"}
 
 
