@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, jsonify, request
+from flask import Blueprint, render_template, jsonify, request,redirect,url_for
 from pymongo import MongoClient
 from dotenv import load_dotenv
 
@@ -61,12 +61,15 @@ def get_edit():
         content = post["content"]
         return render_template("edit.html",title=title,content=content)
     else:
-        id = request.form.get("id")
+        id = int(request.form.get("id"))
         title = request.form.get("title")
         content = request.form.get("content")
-        
-        return {"msg" : "post"}
-
+        try :
+            post = db.poster.update_one({"id": id},{"$set": {"title":title,"content": content}} )
+            return {"msg": "success"}
+        except:
+            return {"msg":f"poster no {id} may not be updated."}
+ 
 
 @poster_bp.route("/submit", methods=["POST"])
 def post_submit():
