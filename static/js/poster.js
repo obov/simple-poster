@@ -13,9 +13,10 @@ function getPost(id) {
         data: {},
         success: (response)=>{
             const { title, username, content, time } = response;
+            const name = username === undefined ? "annonymous" : username;
 
             $("#title").append(`<p>${title}</p>`);
-            $("#name").append(`<p>작성자</p><span>${time}</span>`);
+            $("#name").append(`<p>${name}</p><span>${time}</span>`);
             $("#content").append(`<p>${content}</p>`);
         }
 
