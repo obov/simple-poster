@@ -101,8 +101,8 @@ main .poster-list li:hover .icon-wrapper i {
 }
 main .delete-box {
   position: fixed;
-  width: 300px;
-  height: 200px;
+  width: 320px;
+  height: fit-content;
   background-color: rgb(240, 240, 240);
   border-radius: 20px;
   box-shadow: 0px 6px 12px rgb(180, 180, 180);
@@ -112,11 +112,11 @@ main .delete-box {
   display: none;
 }
 main .delete-box .delete-inside {
+  padding: 10px 30px;
   height: 100%;
   gap: 18px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
 }
 main .delete-box .delete-inside span:first-child {

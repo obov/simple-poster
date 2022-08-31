@@ -53,7 +53,6 @@ def post_view():
 
 @poster_bp.route("/edit",methods=['GET','POST'])
 def edit():
-    print(request.method)
     if request.method == "GET" : 
         id = int(request.args["id"])
         post = db.poster.find_one({"id": id}, {"_id": False})
