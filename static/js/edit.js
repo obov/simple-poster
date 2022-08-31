@@ -22,7 +22,11 @@ form.on("submit", function (event) {
     url: `/poster/edit`,
     data: { id, title: title.val(), content: content.val() },
     success: function ({ msg }) {
-      console.log("msg : ", msg);
+      if (msg === "success") {
+        window.location.href = `/poster/?id=${id}`;
+      } else {
+        console.log("msg : ", msg);
+      }
     },
     error: function (error) {
       console.log("error : ", error);
