@@ -5,15 +5,19 @@ from dotenv import load_dotenv
 import time
 import datetime
 import os
+import jwt
+import hashlib
 
 
 load_dotenv()
 URL = os.environ.get("MongoDB_URL")
+KEY = os.environ.get("SECRET_KEY")
 
 client = MongoClient(URL, tls=True, tlsAllowInvalidCertificates=True) 
 db = client.simple_poster
 
 poster_bp = Blueprint("poster", __name__)
+
 
 @poster_bp.route('/list',methods=['GET'])
 def get_list():
@@ -42,6 +46,11 @@ def poster():
 @poster_bp.route("/write")
 def post_write():
     return render_template("new_poster.html")
+    # token = request.cookies.get("logintoke")
+    # if token is not None:
+    #     return render_template("new_poster.html")
+    # else:
+    #     return render_template("login.html")
 
 
 
@@ -57,9 +66,17 @@ def post_view():
 @poster_bp.route("/submit", methods=["POST"])
 def post_submit():
     ## validator
-    print("submit")
+    token = request.cookies.get("logintoken")
+    print(token)
 
-    # username_receive = request.form["username_give"]
+    if token is not None:
+        try:
+            payload = jwt.decode(token, KEY, algorithms=["HS256"])
+            username_receive = payload["username"]
+        except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
+            return jsonify({"success": False})
+    else: username_receive = "annonymous"
+
     title_receive = request.form["title_give"]
     content_receive = request.form["content_give"]
     time = str(datetime.datetime.now()).split(".")[0]
@@ -67,7 +84,7 @@ def post_submit():
 
     doc = {
         "id": id,
-        # "username": username_receive,
+        "username": username_receive,
         "title": title_receive,
         "content": content_receive,
         "time": time,
@@ -79,4 +96,4 @@ def post_submit():
     print(doc)
     db.poster.insert_one(doc)
 
-    return jsonify({"msg":"success"})
+    return jsonify({"success": True})

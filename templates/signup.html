@@ -2,20 +2,25 @@
 <!--  -->
 {% block title %}Home{%endblock%}
 <!--  -->
-{% block css %}<link
-  rel="stylesheet"
-  href="{{ url_for('static', filename='css/home.css') }}"
-/>{%endblock%}
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}"/>
+<style>
+  .help-format {
+    color: red;
+    font-weight: bold;
+  }
+</style>
+{%endblock%}
 <!--  -->
 {% block content %}
 <section>
-  ID<br />
-  <input type="text" name="user_ID" placeholder="아이디 입력" />
+  <span class="username-txt" id="아이디-txt">아이디</span><br />
+  <input type="text" name="user_ID" id="아이디" placeholder="아이디 입력" />
   <br />
-  password<br />
-  <input type="password" name="user_PW1" value="" /><br />
-  confirm<br />
-  <input type="password" name="user_PW2" value="" />
+  <span class="password-txt" id="비밀번호-txt">비밀번호</span><br />
+  <input type="password" name="user_PW1" id="비밀번호" placeholder="비밀번호 입력" /><br />
+  <span class="password2-txt" id="password2-txt">비밀번호 확인</span><br />
+  <input type="password" name="user_PW2" id="password2" placeholder="비밀번호 재입력" />
   <br />
   <input type="submit" id="submit" name="" value="제출" />
 </section>
