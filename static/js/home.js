@@ -11,7 +11,7 @@ const listingData = (tagToAppend, data) => {
     const ancherPoster = tag("a")
       .attr("href", "/poster?" + qs)
       .text(title);
-    const ancherEdit = tag("a").attr("href", "/poster/edit"); // TODO : id 값에 따라 값을 불러와서 초기 값으로 보여주기
+    const ancherEdit = tag("a").attr("href", "/poster/edit?" + qs); // (완료-세욱)TODO : id 값에 따라 값을 불러와서 초기 값으로 보여주기
     const ancherDelete = tag("a").attr("href", "/poster/delete");
     const editIcon = tag("i").addClass("bi bi-pencil-square");
     const iconWrapper = tag("div").addClass("icon-wrapper");
