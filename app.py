@@ -5,20 +5,17 @@ from mdb import user_bp
 app = Flask(__name__)
 app.register_blueprint(poster_bp, url_prefix="/poster")
 app.register_blueprint(user_bp, url_prefix="/user")
-app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 @app.route('/')
 def home():
     return render_template("home.html")
 
-
 @app.route("/signup")
 def signup():
     return render_template("signup.html")
 
-
 @app.route("/login")
-def login():
+def loginp():
     return render_template("login.html")
 
 
