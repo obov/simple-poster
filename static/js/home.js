@@ -1,5 +1,6 @@
 const postList = $("#posterList");
 const logo = $("#logo");
+const deleteBox = $("#deleteBox");
 const deleteButton = $("#delete");
 const deleteCancel = $("#cancel");
 
@@ -29,7 +30,7 @@ const listingData = (tagToAppend, data) => {
     tagToAppend.append(liWrapper);
 
     divDelete.on("click", function () {
-      $("#deleteBox").css("display", "block");
+      deleteBox.css("display", "block");
     });
   }
 };
@@ -66,10 +67,13 @@ $(document).ready(function () {
       error: function (error) {
         console.log("error : ", error);
       },
+      complete: function () {
+        deleteBox.css("display", "none");
+      },
     });
   });
 
   deleteCancel.on("click", function () {
-    console.log("cancel!");
+    deleteBox.css("display", "none");
   });
 });
