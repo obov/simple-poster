@@ -138,11 +138,11 @@ main .delete-box .delete-inside span:nth-child(2) {
   main .poster-list li .icon-wrapper {
     flex-direction: column;
     margin: 8px 4px 8px 0;
-    gap: 4px;
+    gap: 6px;
   }
   main .poster-list li .icon-wrapper a,
   main .poster-list li .icon-wrapper .del {
     margin: 0;
-    padding: 0, 10px;
+    padding: 0 10px;
   }
 }

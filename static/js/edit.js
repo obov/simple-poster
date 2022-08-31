@@ -14,6 +14,7 @@ const id = window.location.search.split("=")[1];
 const form = $("#editForm");
 const title = $("#title");
 const content = $("#content");
+const goToList = $("#goToList");
 
 form.on("submit", function (event) {
   event.preventDefault();
@@ -32,4 +33,7 @@ form.on("submit", function (event) {
       console.log("error : ", error);
     },
   });
+});
+goToList.on("click", function () {
+  window.location.href = "/";
 });
