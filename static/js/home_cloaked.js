@@ -69,20 +69,20 @@ $(document).ready(function () {
   //   const dataParsed = JSON.parse(dataToShow);
   //   listingData(postList, dataParsed);
   // }
-  $.ajax({
-    type: "GET",
-    url: "/poster/list",
-    data: {},
-    success: function ({ data }) {
-      postList.empty();
-      console.log(data);
-      localStorage.setItem("data", JSON.stringify(data));
-      listingData(postList, data);
-    },
-    error: function (error) {
-      console.log("error : ", error);
-    },
-  });
+  // $.ajax({
+  //   type: "GET",
+  //   url: "/poster/list",
+  //   data: {},
+  //   success: function ({ data }) {
+  //     postList.empty();
+  //     console.log(data);
+  //     localStorage.setItem("data", JSON.stringify(data));
+  //     listingData(postList, data);
+  //   },
+  //   error: function (error) {
+  //     console.log("error : ", error);
+  //   },
+  // });
 
   deleteButton.on("click", function () {
     $.ajax({
