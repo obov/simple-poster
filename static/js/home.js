@@ -74,6 +74,7 @@ $(document).ready(function () {
       },
       complete: function () {
         deleteBox.css("display", "none");
+        location.reload();
       },
     });
   });

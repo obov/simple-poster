@@ -72,9 +72,8 @@ def edit():
         
 @poster_bp.route("/delete",methods=['POST'])
 def delete():
-    # db.poster.delete_one({"id": id})
     id = int(request.form.get("id"))
-    print(id)
+    db.poster.delete_one({"id": id})
     return {"msg":"success"}
 
 @poster_bp.route("/submit", methods=["POST"])
