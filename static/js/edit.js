@@ -4,12 +4,15 @@
 //   $("main").load("/edit .wrapper", console.log("test success"));
 // });
 const form = $("#editForm");
+const title = $("#title");
+const content = $("#content");
+
 form.on("submit", function (event) {
   event.preventDefault();
   $.ajax({
     type: "POST",
     url: "/poster/edit",
-    data: {},
+    data: { title: title.val(), content: content.val() },
     success: function ({ msg }) {
       console.log("msg : ", msg);
     },
@@ -17,5 +20,4 @@ form.on("submit", function (event) {
       console.log("error : ", error);
     },
   });
-  console.log("submit");
 });

@@ -27,7 +27,9 @@ def get_edit():
     if request.method == "GET" : 
         return render_template("edit.html")
     else:
-        print("post")
+        title = request.form["title"]
+        content = request.form.get("content")
+        print("title : ",title)
         return {"msg" : "post"}
 
 @poster_bp.route("/")
