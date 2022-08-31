@@ -12,11 +12,12 @@ $('#submit').click(()=>{
     return;
   }
 
-  $.post('http://localhost:5000/user/signup', {
+  $.post("/user/signup", {
     username: username,
     password: password,
   }, (response)=>{
-    window.location.replace("/");
+    alert(response["msg"]);
+    window.location.replace("/login");
   });
 });
 
@@ -24,14 +25,21 @@ $('#login').click(()=>{
   console.log("Click")
   const username = $('#username').val();
   const password = $('#password').val();
-  if (checkFormat(username,"아이디")) return;
-  if (checkFormat(password,"비밀번호")) return;
+  // if (checkFormat(username,"아이디")) return;
+  // if (checkFormat(password,"비밀번호")) return;
 
-  $.post('http://localhost:5000/user/login', {
+  $.post("/user/login", {
     username: username,
     password: password,
   }, (response)=>{
-    window.location.replace("/");
+    if (response["flag"]) {
+      // $.cookie("mytoken", response["token"], {path: "/"})
+      $.cookie("logintoken", response["token"], {path: "/"})
+      window.location.replace("/");
+    } else {
+      console.log(response["msg"]);
+      $("#password").val("");
+    }
   });
 })
 
