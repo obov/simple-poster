@@ -17,12 +17,21 @@ poster_bp = Blueprint("poster", __name__)
 
 
 @poster_bp.route('/list',methods=['GET'])
-def get_poster_list():
+def get_list():
     # time.sleep(3)
     posters = list(db.poster.find({},{"_id":False}))
     posters.reverse()
     return jsonify({"data":posters})
 
+@poster_bp.route("/edit",methods=['GET','POST'])
+def get_edit():
+    if request.method == "GET" : 
+        return render_template("edit.html")
+    else:
+        title = request.form["title"]
+        content = request.form.get("content")
+        print("title : ",title)
+        return {"msg" : "post"}
 
 @poster_bp.route("/")
 def poster():
@@ -32,6 +41,7 @@ def poster():
 @poster_bp.route("/write")
 def post_write():
     return render_template("new_poster.html")
+
 
 
 @poster_bp.route("/view", methods=["GET"])

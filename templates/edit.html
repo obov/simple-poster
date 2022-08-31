@@ -1,0 +1,36 @@
+{% extends "base.html"%}
+<!--  -->
+{% block title %}Edit{%endblock%}
+<!--  -->
+{% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/edit.css') }}" />{%endblock%}
+<!--  -->
+{% block content %}
+<div class="wrapper">
+  <form id="editForm">
+    <div class="input-wrapper">
+      <h1>글 수정하기</h1>
+      <div class="title-wrapper">
+        <input class="form-control" id="title" required placeholder="글 제목" maxlength="50" />
+      </div>
+      <div class="content-wrapper">
+        <textarea
+          class="form-control"
+          id="content"
+          required
+          rows="15"
+          placeholder="글 내용"
+          maxlength="2048"
+        ></textarea>
+      </div>
+    </div>
+    <div>
+      <input type="button" class="submit-btn btn btn-secondary" value="목록으로" />
+      <button class="submit-btn btn btn-primary" id="submit">제출하기</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
+<!--  -->
+{% block script %}
+<script src="{{ url_for('static', filename='js/edit.js') }}"></script>
+{% endblock %}
