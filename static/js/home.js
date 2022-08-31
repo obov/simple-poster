@@ -8,6 +8,7 @@ const delContent = $("#delboxContent");
 let idToDelete;
 
 const tag = (tagName) => $(`<${tagName}></${tagName}>`);
+const replaceApostrophe = (text) => text.replaceAll("'", "\\'");
 const deleteBoxShow = function (id, title) {
   idToDelete = id;
   delContent.text(title);
@@ -26,7 +27,7 @@ const listingData = (tagToBeAppended, data) => {
         <a href="/poster/edit?id=${id}">
           <i class="bi bi-pencil-square"></i>
         </a>
-        <div class="del" onclick="deleteBoxShow(${id},'${title}')">
+        <div class="del" onclick="deleteBoxShow(${id},'${replaceApostrophe(title)}')">
           <i class="bi bi-trash3"></i>
         </div>
       </div>
