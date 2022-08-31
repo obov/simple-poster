@@ -53,10 +53,13 @@ def post_view():
 
 @poster_bp.route("/edit",methods=['GET','POST'])
 def get_edit():
+    print(request.method)
     if request.method == "GET" : 
-        id = int(request.args["id"]) 
-        print(id)
-        return render_template("edit.html",title="title",content="content")
+        id = int(request.args["id"])
+        post = db.poster.find_one({"id": id}, {"_id": False})
+        title = post["title"]
+        content = post["content"]
+        return render_template("edit.html",title=title,content=content)
     else:
         title = request.form["title"]
         content = request.form.get("content")
@@ -68,7 +71,6 @@ def get_edit():
 def post_submit():
     ## validator
     token = request.cookies.get("logintoken")
-    print(token)
 
     if token is not None:
         try:
