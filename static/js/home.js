@@ -1,5 +1,7 @@
 const postList = $("#posterList");
 const logo = $("#logo");
+const deleteButton = $("#delete");
+const deleteCancel = $("#cancel");
 
 const tag = (tagName) => $(`<${tagName}></${tagName}>`);
 const listingData = (tagToAppend, data) => {
@@ -51,5 +53,23 @@ $(document).ready(function () {
     error: function (error) {
       console.log("error : ", error);
     },
+  });
+
+  deleteButton.on("click", function () {
+    $.ajax({
+      type: "POST",
+      url: "/poster/delete",
+      data: {},
+      success: function ({ msg }) {
+        console.log(msg);
+      },
+      error: function (error) {
+        console.log("error : ", error);
+      },
+    });
+  });
+
+  deleteCancel.on("click", function () {
+    console.log("cancel!");
   });
 });

@@ -52,7 +52,7 @@ def post_view():
 
 
 @poster_bp.route("/edit",methods=['GET','POST'])
-def get_edit():
+def edit():
     print(request.method)
     if request.method == "GET" : 
         id = int(request.args["id"])
@@ -69,7 +69,11 @@ def get_edit():
             return {"msg": "success"}
         except:
             return {"msg":f"poster no {id} may not be updated."}
- 
+        
+@poster_bp.route("/delete",methods=['POST'])
+def delete():
+    # db.poster.delete_one({"id": id})
+    return {"msg":"success"}
 
 @poster_bp.route("/submit", methods=["POST"])
 def post_submit():
