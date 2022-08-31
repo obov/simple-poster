@@ -111,6 +111,21 @@ main .delete-box {
   right: 0;
   display: none;
 }
+main .delete-box .delete-inside {
+  height: 100%;
+  gap: 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+main .delete-box .delete-inside span:first-child {
+  display: block;
+  font-size: 16px;
+}
+main .delete-box .delete-inside span:nth-child(2) {
+  font-size: 24px;
+}
 @media (width <= 940px) {
   main .content-title h1 {
     font-size: 16px;
