@@ -1,10 +1,10 @@
-$(document).ready(function () {
-  $('#submit').click(function () {
-    var id = $('input[name="user_ID"]').val();
-    var password = $('input[name="user_PW1"]').val();
-    var password2 = $('input[name="user_PW2"]').val();
 
-    if (id === '') {
+  $('#submit').click(function () {
+    const username = $('input[name="user_ID"]').val();
+    const password = $('input[name="user_PW1"]').val();
+    const password2 = $('input[name="user_PW2"]').val();
+
+    if (username === '') {
       alert('아이디 입력해주세요');
       return false;
     }
@@ -19,27 +19,32 @@ $(document).ready(function () {
       return false;
     }
 
-    $.post('http://localhost:5000/register', {
-      id: id,
+    $.post('http://localhost:5000/user/signup', {
+      username: username,
       password: password,
+    }, (response)=>{
+      console.log(response.msg)
     });
   });
 
   $('#login').click(function (e) {
-    var userNname = $('#userNname').val();
-    var userPassword = $('#userPassword').val();
-    if (userNname == '') {
+    console.log("Click")
+    const username = $('#username').val();
+    const password = $('#password').val();
+    if (username == '') {
       alert('아이디 입력해주세요');
       return false;
     }
-    if (userPassword == '') {
+    if (password == '') {
       alert('비밀번호 입력해주세요');
       return false;
     }
 
-    $.post('http://localhost:5000/login', {
-      userNname: userNname,
-      userPassword: userPassword,
+    $.post('http://localhost:5000/user/login', {
+      username: username,
+      password: password,
+    }, (response)=>{
+      // 서버에서 암호화한 로그인 토큰을 다시 건네받고 브라우저 쿠키에 저장해야해요.
     });
-  });
-});
+  })
+
