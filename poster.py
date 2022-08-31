@@ -19,12 +19,37 @@ db = client.simple_poster
 poster_bp = Blueprint("poster", __name__)
 
 
+@poster_bp.route("/")
+def poster():
+    return render_template("poster.html")
+
+
+@poster_bp.route("/write")
+def post_write():
+    return render_template("new_poster.html")
+    # token = request.cookies.get("logintoke")
+    # if token is not None:
+    #     return render_template("new_poster.html")
+    # else:
+    #     return render_template("login.html")
+
+
 @poster_bp.route('/list',methods=['GET'])
 def get_list():
     # time.sleep(3)
     posters = list(db.poster.find({},{"_id":False}))
     posters.reverse()
     return jsonify({"data":posters})
+
+
+@poster_bp.route("/view", methods=["GET"])
+def post_view():
+        ## validator
+    id = int(request.args["id"])    
+    post = db.poster.find_one({"id": id}, {"_id": False})
+
+    return jsonify(post)
+
 
 @poster_bp.route("/edit",methods=['GET','POST'])
 def get_edit():
@@ -37,30 +62,6 @@ def get_edit():
         content = request.form.get("content")
         print("title : ",title)
         return {"msg" : "post"}
-
-@poster_bp.route("/")
-def poster():
-    return render_template("poster.html")
-        
-
-@poster_bp.route("/write")
-def post_write():
-    return render_template("new_poster.html")
-    # token = request.cookies.get("logintoke")
-    # if token is not None:
-    #     return render_template("new_poster.html")
-    # else:
-    #     return render_template("login.html")
-
-
-
-@poster_bp.route("/view", methods=["GET"])
-def post_view():
-        ## validator
-    id = int(request.args["id"])    
-    post = db.poster.find_one({"id": id}, {"_id": False})
-
-    return jsonify(post)
 
 
 @poster_bp.route("/submit", methods=["POST"])

@@ -5,10 +5,9 @@
 // });
 
 // id값 가져오기
+const qs = window.location.search.substring(1);
+const id = decodeURIComponent(qs).split("=")[1];
 $(()=>{
-  const qs = window.location.search.substring(1);
-  const id = decodeURIComponent(qs).split("=")[1];
-
   getPost(id);
 });
 
