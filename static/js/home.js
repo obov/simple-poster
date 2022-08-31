@@ -3,6 +3,9 @@ const logo = $("#logo");
 const deleteBox = $("#deleteBox");
 const deleteButton = $("#delete");
 const deleteCancel = $("#cancel");
+const delContent = $("#delboxContent");
+
+let idToDelete;
 
 const tag = (tagName) => $(`<${tagName}></${tagName}>`);
 const listingData = (tagToAppend, data) => {
@@ -30,6 +33,8 @@ const listingData = (tagToAppend, data) => {
     tagToAppend.append(liWrapper);
 
     divDelete.on("click", function () {
+      idToDelete = id;
+      delContent.text(title);
       deleteBox.css("display", "block");
     });
   }
@@ -60,7 +65,7 @@ $(document).ready(function () {
     $.ajax({
       type: "POST",
       url: "/poster/delete",
-      data: {},
+      data: { id: idToDelete },
       success: function ({ msg }) {
         console.log(msg);
       },
