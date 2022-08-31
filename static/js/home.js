@@ -12,15 +12,15 @@ const listingData = (tagToAppend, data) => {
       .attr("href", "/poster?" + qs)
       .text(title);
     const ancherEdit = tag("a").attr("href", "/poster/edit?id=" + id);
-    const ancherDelete = tag("a").attr("href", "/poster/delete");
+    const divDelete = tag("div").addClass("del");
     const editIcon = tag("i").addClass("bi bi-pencil-square");
     const iconWrapper = tag("div").addClass("icon-wrapper");
     const deleteIcon = tag("i").addClass("bi bi-trash3");
 
-    ancherDelete.append(deleteIcon);
     ancherEdit.append(editIcon);
+    divDelete.append(deleteIcon);
     iconWrapper.append(ancherEdit);
-    iconWrapper.append(ancherDelete);
+    iconWrapper.append(divDelete);
     liWrapper.append(ancherPoster);
     liWrapper.append(iconWrapper);
 

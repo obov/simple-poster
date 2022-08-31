@@ -65,23 +65,41 @@ main .poster-list li a {
 main .poster-list li a:hover {
   color: rgb(45, 45, 45);
 }
-main .poster-list li div {
+main .poster-list li .icon-wrapper {
   padding: 2px;
   display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
 }
-main .poster-list li div a {
+
+main .poster-list li .icon-wrapper a,
+main .poster-list li .icon-wrapper .del {
+  max-height: 24px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   padding: 5px;
-  display: inline-block;
   font-size: 22px;
   color: white;
   transition: 0.35s;
   margin-right: 5px;
 }
-main .poster-list li:hover div a {
+main .poster-list li:hover .icon-wrapper a,
+main .poster-list li:hover .icon-wrapper .del {
   color: rgb(180, 180, 180);
 }
-main .poster-list li:hover div a:hover {
+main .poster-list li:hover .icon-wrapper a:hover,
+main .poster-list li:hover .icon-wrapper .del:hover {
   color: rgb(15, 15, 15);
+}
+main .poster-list li:hover .icon-wrapper i {
+  min-width: 22px;
+  min-height: 22px;
+}
+main .delete-box {
 }
 @media (width <= 940px) {
   main .content-title h1 {
@@ -92,10 +110,14 @@ main .poster-list li:hover div a:hover {
   main .poster-list li {
     padding: 0 5px;
   }
-  main .poster-list li div {
+  main .poster-list li .icon-wrapper {
     flex-direction: column;
+    margin: 8px 4px 8px 0;
+    gap: 4px;
   }
-  main .poster-list li div i {
+  main .poster-list li .icon-wrapper a,
+  main .poster-list li .icon-wrapper .del {
     margin: 0;
+    padding: 0, 10px;
   }
 }
