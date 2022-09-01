@@ -13,7 +13,10 @@ def home():
 @app.route('/cloak')
 def cloaked():
     posters = list(db.poster.find({},{"_id":False}))
+    for poster in posters : 
+        poster['title_replaced'] = poster['title'].replace("'","\\'")
     posters.reverse()
+        
     return render_template("home_cloaked.html",posters=posters)
 
 @app.route("/signup")

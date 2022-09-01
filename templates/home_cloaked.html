@@ -24,7 +24,7 @@
       <a href="/poster/edit?id={{poster['id']}}">
         <i class="bi bi-pencil-square"></i>
       </a>
-      <div class="del" onclick="deleteBoxShow('{{poster.values()[0]}}','replaceApostrophe({{poster.values()[1]}})')">
+      <div class="del" onclick="deleteBoxShow({{poster['id']}},'{{poster['title_replaced']}}')">
         <i class="bi bi-trash3"></i>
       </div>
     </div>
