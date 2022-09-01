@@ -27,6 +27,7 @@ main .content-title h1 {
   cursor: none;
   user-select: none;
 }
+
 main .poster-list {
   margin: 0 auto;
   width: 90%;
@@ -72,7 +73,6 @@ main .poster-list li .icon-wrapper {
   align-items: center;
   gap: 4px;
 }
-
 main .poster-list li .icon-wrapper a,
 main .poster-list li .icon-wrapper .del {
   max-height: 24px;
@@ -99,6 +99,7 @@ main .poster-list li:hover .icon-wrapper i {
   min-width: 22px;
   min-height: 22px;
 }
+
 main .delete-box {
   position: fixed;
   width: 320px;
