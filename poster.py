@@ -21,7 +21,13 @@ poster_bp = Blueprint("poster", __name__)
 
 @poster_bp.route("/")
 def poster():
-    return render_template("poster.html")
+    id = int(request.args["id"]) 
+    post = db.poster.find_one({"id": id}, {"_id": False})
+    title = post["title"]
+    username = post["username"]
+    time = post["time"]
+    content = post["content"]
+    return render_template("poster.html", title=title, username=username, time=time, content=content)
 
 
 @poster_bp.route("/write")
@@ -40,15 +46,6 @@ def get_list():
     posters = list(db.poster.find({},{"_id":False}))
     posters.reverse()
     return jsonify({"data":posters})
-
-
-@poster_bp.route("/view", methods=["GET"])
-def post_view():
-        ## validator
-    id = int(request.args["id"])    
-    post = db.poster.find_one({"id": id}, {"_id": False})
-
-    return jsonify(post)
 
 
 @poster_bp.route("/edit",methods=['GET','POST'])
@@ -77,7 +74,6 @@ def delete():
 
 @poster_bp.route("/submit", methods=["POST"])
 def post_submit():
-    ## validator
     token = request.cookies.get("logintoken")
 
     if token is not None:

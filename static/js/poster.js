@@ -1,25 +1,50 @@
 $(()=>{
-    // validator
-    const qs = window.location.search.substring(1);
-    const id = decodeURIComponent(qs).split("=")[1];
-    getPost(id);
+    setLoginSession();
 });
 
-function getPost(id) {
+function setLoginSession() {
+    const cookies = document.cookie.split("; ");
+    let cookie = new Map();
+    for(i=0;i<cookies.length;i++) {
+        c = cookies[i].split("=");
+        cookie.set(c[0], c[1]);
+    }
+    sessionStorage.setItem("logintoken", cookie.get("logintoken"));
+}
+
+function postSubmit() {
+    const title = $("#title").val();
+    const content = $("#content").val();    
+
+    if (title==="") {
+        alert("제목을 입력해주세요");
+        $("#title").focus();
+        return;
+    }
+    if (content==="") {
+        alert("내용을 입력해주세요");
+        $("#content").focus();
+        return;
+    }
+
+    /* username & token validator */
 
     $.ajax({
-        type: "GET",
-        url: `/poster/view?id=${id}`,
-        data: {},
+        type: "POST",
+        url: "/poster/submit",
+        data: {
+            title_give: title,
+            content_give: content,
+        },
         success: (response)=>{
-            const { title, username, content, time } = response;
-            const name = username === undefined ? "annonymous" : username;
-
-            $("#title").append(`<p>${title}</p>`);
-            $("#name").append(`<p>${name}</p><span>${time}</span>`);
-            $("#content").append(`<p>${content}</p>`);
+            if (response["success"]) {
+                console.log(response["msg"]);
+                window.location.replace("/");
+            } else {
+                alert("로그인이 만료되었습니다. 다시 로그인해주세요.");
+            }
+            
         }
-
     });
 }
 
