@@ -21,10 +21,12 @@ poster_bp = Blueprint("poster", __name__)
 def poster():
     id = int(request.args["id"]) 
     post = db.poster.find_one({"id": id}, {"_id": False})
+
     title = post["title"]
     username = post["username"]
     time = post["time"]
     content = post["content"]
+
     return render_template("poster.html", title=title, username=username, time=time, content=content)
 
 
@@ -73,6 +75,7 @@ def post_write():
 def get_list():
     posters = list(db.poster.find({},{"_id":False}))
     posters.reverse()
+
     return jsonify({"data":posters})
 
 
@@ -80,12 +83,15 @@ def get_list():
 def edit():
     if request.method == "GET" :
         id = int(request.args["id"])
+
         post = db.poster.find_one({"id": id}, {"_id": False})
         title = post["title"]
         content = post["content"]
+
         return render_template("edit.html", title=title, content=content)   
     else:
         id = int(request.form.get("id"))
+
         title = request.form.get("title")
         content = request.form.get("content")
         time = str(datetime.datetime.now()).split(".")[0]
@@ -105,6 +111,7 @@ def edit():
 def delete():
     id = int(request.form.get("id"))
     db.poster.delete_one({"id": id})
+    
     return {"msg":"success"}
 
 
