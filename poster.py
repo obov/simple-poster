@@ -2,11 +2,9 @@ from flask import Blueprint, render_template, jsonify, request
 from pymongo import MongoClient
 from dotenv import load_dotenv
 
-import time
 import datetime
 import os
 import jwt
-import hashlib
 
 
 load_dotenv()
@@ -60,8 +58,6 @@ def post_write():
 
         id += 1
         db.index.update_one({}, {"$set": {"index": id}})
-
-        print(doc)
         db.poster.insert_one(doc)
 
         return jsonify({"success": True})
@@ -75,7 +71,6 @@ def post_write():
 
 @poster_bp.route('/list',methods=['GET'])
 def get_list():
-    # time.sleep(3)
     posters = list(db.poster.find({},{"_id":False}))
     posters.reverse()
     return jsonify({"data":posters})
