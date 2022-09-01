@@ -27,11 +27,9 @@ function postSubmit() {
         return;
     }
 
-    /* username & token validator */
-
     $.ajax({
         type: "POST",
-        url: "/poster/submit",
+        url: "/poster/write",
         data: {
             title_give: title,
             content_give: content,
