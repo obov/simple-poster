@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, jsonify, request
+from flask import Blueprint, render_template, jsonify, request, redirect, url_for
 from pymongo import MongoClient
 from dotenv import load_dotenv
 
@@ -76,14 +76,14 @@ def get_list():
     return jsonify({"data":posters})
 
 
-@poster_bp.route("/edit",methods=['GET','POST'])
+@poster_bp.route("/edit", methods=["GET", "POST"])
 def edit():
-    if request.method == "GET" : 
+    if request.method == "GET" :
         id = int(request.args["id"])
         post = db.poster.find_one({"id": id}, {"_id": False})
         title = post["title"]
         content = post["content"]
-        return render_template("edit.html",title=title,content=content)
+        return render_template("edit.html", title=title, content=content)   
     else:
         id = int(request.form.get("id"))
         title = request.form.get("title")
@@ -106,3 +106,26 @@ def delete():
     id = int(request.form.get("id"))
     db.poster.delete_one({"id": id})
     return {"msg":"success"}
+
+
+@poster_bp.route("/editcheck", methods=["GET"])
+def post_edit():
+    token = request.cookies.get("logintoken")
+    if token is not None:
+        try:
+            payload = jwt.decode(token, KEY, algorithms=["HS256"])
+            username_token = payload["username"]
+            
+            id = int(request.args["id"])
+            post = db.poster.find_one({"id": id}, {"_id": False})
+            username_post = post["username"]
+            
+            if username_token == username_post:
+                return jsonify({"success": True, "id": id})
+            else:    # if username_token != username_post
+                return jsonify({"success": False, "msg":"작성자만 수정할 수 있습니다."})
+        except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
+            # if token is expired
+            return jsonify({"success": False, "msg":"작성자만 수정할 수 있습니다."})
+    else:   # if no valid token in cookie
+        return jsonify({"success": False, "msg":"작성자만 수정할 수 있습니다."})
