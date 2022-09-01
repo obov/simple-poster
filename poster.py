@@ -60,17 +60,25 @@ def edit():
         id = int(request.form.get("id"))
         title = request.form.get("title")
         content = request.form.get("content")
+        time = str(datetime.datetime.now()).split(".")[0]
+        doc = {
+            "title": title,
+            "content": content,
+            "time": time,
+        }
         try :
-            post = db.poster.update_one({"id": id},{"$set": {"title":title,"content": content}} )
+            post = db.poster.update_one({"id": id},{"$set": doc} )
             return {"msg": "success"}
         except:
             return {"msg":f"poster no {id} may not be updated."}
         
+
 @poster_bp.route("/delete",methods=['POST'])
 def delete():
     id = int(request.form.get("id"))
     db.poster.delete_one({"id": id})
     return {"msg":"success"}
+
 
 @poster_bp.route("/submit", methods=["POST"])
 def post_submit():
