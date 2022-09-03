@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, jsonify, request, redirect, url_for
+from flask import Blueprint, render_template, jsonify, request
 from pymongo import MongoClient
 from dotenv import load_dotenv
 
@@ -111,7 +111,7 @@ def edit():
 def delete():
     id = int(request.form.get("id"))
     db.poster.delete_one({"id": id})
-    
+
     return {"msg":"success"}
 
 

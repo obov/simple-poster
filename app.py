@@ -1,5 +1,4 @@
 from flask import Flask, render_template
-from pymongo import MongoClient
 from poster import poster_bp,db
 from mdb import user_bp
 
