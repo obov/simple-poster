@@ -5,18 +5,20 @@
 {% block css %}<link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}" />{%endblock%}
 <!--  -->
 {% block content %}
-<div class="content-title"><h1>Here are your thoughts</h1></div>
-<div id="deleteBox" class="delete-box">
-  <div class="delete-inside">
-    <span>다음 게시글을 지웁니다</span>
-    <span id="delboxContent">제목이들어갈자리</span>
-    <div class="btn-wrap">
-      <button id="delete" class="submit-btn btn btn-secondary">remove</button>
-      <button id="cancel" class="submit-btn btn btn-primary">cancel</button>
+<div class="wrapper">
+  <div class="content-title"><h1>Here are your thoughts</h1></div>
+  <div id="deleteBox" class="delete-box">
+    <div class="delete-inside">
+      <span>다음 게시글을 지웁니다</span>
+      <span id="delboxContent">제목이들어갈자리</span>
+      <div class="btn-wrap">
+        <button id="delete" class="submit-btn btn btn-secondary">remove</button>
+        <button id="cancel" class="submit-btn btn btn-primary">cancel</button>
+      </div>
     </div>
   </div>
+  <ul id="posterList" class="poster-list"></ul>
 </div>
-<ul id="posterList" class="poster-list"></ul>
 {% endblock %}
 <!--  -->
 {% block script %}

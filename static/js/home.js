@@ -4,7 +4,7 @@ const deleteBox = $("#deleteBox");
 const deleteButton = $("#delete");
 const deleteCancel = $("#cancel");
 const delContent = $("#delboxContent");
-
+history.replaceState({ title: "Home" }, "");
 let idToDelete;
 
 const tag = (tagName) => $(`<${tagName}></${tagName}>`);
