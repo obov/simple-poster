@@ -24,7 +24,7 @@ const listingData = (tagToBeAppended, data) => {
     <li id="poster${id}">
       <a href="/poster?id=${id}">${title}</a>
       <div class="icon-wrapper">
-        <a href="/poster/edit?id=${id}">
+        <a onclick="postEdit(${id})">
           <i class="bi bi-pencil-square"></i>
         </a>
         <div class="del" onclick="deleteBoxShow('${id}','${replaceApostrophe(title)}')">
@@ -33,6 +33,9 @@ const listingData = (tagToBeAppended, data) => {
       </div>
     </li>
     `;
+    
+    // <a href="/poster/edit?id=${id}">
+
     // const liWrapper = tag("li").attr("id", "poster" + id);
     // const qs = encodeURIComponent(`id=${id}`);
     // const ancherPoster = tag("a")
@@ -84,25 +87,41 @@ $(document).ready(function () {
     },
   });
 
-  deleteButton.on("click", function () {
-    $.ajax({
-      type: "POST",
-      url: "/poster/delete",
-      data: { id: idToDelete },
-      success: function ({ msg }) {
-        console.log(msg);
-      },
-      error: function (error) {
-        console.log("error : ", error);
-      },
-      complete: function () {
-        deleteBox.css("display", "none");
-        location.reload();
-      },
-    });
-  });
+});
 
-  deleteCancel.on("click", function () {
-    deleteBox.css("display", "none");
+function postEdit(id) {
+  // alert(id)
+  $.ajax({
+    type: "GET",
+    url: `/poster/editcheck?id=${id}`,
+    data: {},
+    success: (response)=>{
+      const success = response["success"];
+      const id = response["id"];
+      if (success) window.location.replace(`/poster/edit?id=${id}`);
+      else alert(response["msg"]);
+    }
   });
+}
+
+deleteButton.on("click", function () {
+  $.ajax({
+    type: "POST",
+    url: "/poster/delete",
+    data: { id: idToDelete },
+    success: function ({ msg }) {
+      console.log(msg);
+    },
+    error: function (error) {
+      console.log("error : ", error);
+    },
+    complete: function () {
+      deleteBox.css("display", "none");
+      location.reload();
+    },
+  });
+});
+
+deleteCancel.on("click", function () {
+  deleteBox.css("display", "none");
 });

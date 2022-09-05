@@ -25,15 +25,14 @@ $('#login').click(()=>{
   console.log("Click")
   const username = $('#username').val();
   const password = $('#password').val();
-  // if (checkFormat(username,"아이디")) return;
-  // if (checkFormat(password,"비밀번호")) return;
+  if (checkFormat(username,"아이디")) return;
+  if (checkFormat(password,"비밀번호")) return;
 
   $.post("/user/login", {
     username: username,
     password: password,
   }, (response)=>{
     if (response["flag"]) {
-      // $.cookie("mytoken", response["token"], {path: "/"})
       $.cookie("logintoken", response["token"], {path: "/"})
       window.location.replace("/");
     } else {

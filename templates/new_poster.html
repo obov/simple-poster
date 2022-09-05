@@ -4,9 +4,8 @@
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="../static/css/poster.css" />
-<!-- 부트스트랩 링크 위치 옮겼습니다. -임요한 -->
 {% endblock %} {% block script %}
-<script type="text/javascript" src="../static/js/new_poster.js"></script>
+<script type="text/javascript" src="../static/js/poster.js"></script>
 {% endblock %} {% block content %}
 <div class="wrapper">
   <div class="row">
@@ -38,7 +37,6 @@
         </tbody>
       </table>
       <div class="btns">
-        <!-- cursor pointer가 너무 넓게 적용되어 class명을 바꿨습니다 -->
         <button class="submit-btn btn btn-secondary" id="submit" onclick="back()">돌아가기</button>
         <button class="submit-btn btn btn-primary" id="submit" onclick="postSubmit()">제출하기</button>
       </div>
@@ -46,34 +44,3 @@
   </div>
 </div>
 {% endblock %}
-
-<!-- <form action="/poster" accept-charset="utf-8" name="post-submit" method="post">
-        <fieldset class="submit-wrapper" > -->
-
-<!-- <div class="post-box card border-light mb-3">
-        <div class="post-title card-header">글 작성하기</div>
-        <div class="post-name card-body" style="padding: 3 0 0 20">
-            <input class="submit-title" id="title" type="text" name="submit-title" placeholder="제목을 입력해주세요." />
-            <p id="help-title" class="help is-hidden">제목을 입력해주세요!!</p>
-        </div>
-        <div class="post-body card-body">
-            <textarea class="submit-text" id="content" type="comment" placeholder="내용을 입력해주세요."></textarea>
-            <p id="help-content" class="help is-hidden">내용을 입력해주세요!!</p>
-        </div>
-        <button class="submit-btn btn btn-secondary" id="submit" onclick="postSubmit()">제출하기</button>
-    
-    </div> -->
-
-<!-- <div class="submit-wrapper">
-    <br />
-    <h3 class="title">글 작성하기</h3>
-    <br />
-    <input class="submit-title" id="title" type="text" name="submit-title" placeholder="제목을 입력해주세요." />
-    <p id="help-title" class="help is-hidden">제목을 입력해주세요!!</p>
-    <br />
-    <textarea class="submit-text" id="content" type="comment" placeholder="내용을 입력해주세요."></textarea>
-    <p id="help-content" class="help is-hidden">내용을 입력해주세요!!</p>
-    <br />
-</div> -->
-<!-- </fieldset>
-    </form> -->

@@ -2,11 +2,9 @@ from flask import Blueprint, render_template, jsonify, request
 from pymongo import MongoClient
 from dotenv import load_dotenv
 
-import time
 import datetime
 import os
 import jwt
-import hashlib
 
 
 load_dotenv()
@@ -21,12 +19,51 @@ poster_bp = Blueprint("poster", __name__)
 
 @poster_bp.route("/")
 def poster():
-    return render_template("poster.html")
+    id = int(request.args["id"]) 
+    post = db.poster.find_one({"id": id}, {"_id": False})
+
+    title = post["title"]
+    username = post["username"]
+    time = post["time"]
+    content = post["content"]
+
+    return render_template("poster.html", title=title, username=username, time=time, content=content)
 
 
-@poster_bp.route("/write")
+@poster_bp.route("/write", methods=["GET","POST"])
 def post_write():
-    return render_template("new_poster.html")
+    if request.method == "GET":
+        return render_template("new_poster.html")
+    else:
+        token = request.cookies.get("logintoken")
+
+        if token is not None:
+            try:
+                payload = jwt.decode(token, KEY, algorithms=["HS256"])
+                username_receive = payload["username"]
+            except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
+                return jsonify({"success": False})
+        else: username_receive = "annonymous"
+
+        title_receive = request.form["title_give"]
+        content_receive = request.form["content_give"]
+        time = str(datetime.datetime.now()).split(".")[0]
+        id = db.index.find_one({}, {"_id":False})["index"]
+
+        doc = {
+            "id": id,
+            "username": username_receive,
+            "title": title_receive,
+            "content": content_receive,
+            "time": time,
+        }
+
+        id += 1
+        db.index.update_one({}, {"$set": {"index": id}})
+        db.poster.insert_one(doc)
+
+        return jsonify({"success": True})
+
     # token = request.cookies.get("logintoke")
     # if token is not None:
     #     return render_template("new_poster.html")
@@ -36,75 +73,66 @@ def post_write():
 
 @poster_bp.route('/list',methods=['GET'])
 def get_list():
-    # time.sleep(3)
     posters = list(db.poster.find({},{"_id":False}))
     posters.reverse()
+
     return jsonify({"data":posters})
 
 
-@poster_bp.route("/view", methods=["GET"])
-def post_view():
-        ## validator
-    id = int(request.args["id"])    
-    post = db.poster.find_one({"id": id}, {"_id": False})
-
-    return jsonify(post)
-
-
-@poster_bp.route("/edit",methods=['GET','POST'])
+@poster_bp.route("/edit", methods=["GET", "POST"])
 def edit():
-    if request.method == "GET" : 
+    if request.method == "GET" :
         id = int(request.args["id"])
+
         post = db.poster.find_one({"id": id}, {"_id": False})
         title = post["title"]
         content = post["content"]
-        return render_template("edit.html",title=title,content=content)
+
+        return render_template("edit.html", title=title, content=content)   
     else:
         id = int(request.form.get("id"))
+
         title = request.form.get("title")
         content = request.form.get("content")
+        time = str(datetime.datetime.now()).split(".")[0]
+        doc = {
+            "title": title,
+            "content": content,
+            "time": time,
+        }
         try :
-            post = db.poster.update_one({"id": id},{"$set": {"title":title,"content": content}} )
+            post = db.poster.update_one({"id": id},{"$set": doc} )
             return {"msg": "success"}
         except:
             return {"msg":f"poster no {id} may not be updated."}
         
+
 @poster_bp.route("/delete",methods=['POST'])
 def delete():
     id = int(request.form.get("id"))
     db.poster.delete_one({"id": id})
+
     return {"msg":"success"}
 
-@poster_bp.route("/submit", methods=["POST"])
-def post_submit():
-    ## validator
-    token = request.cookies.get("logintoken")
 
+@poster_bp.route("/editcheck", methods=["GET"])
+def post_edit():
+    token = request.cookies.get("logintoken")
     if token is not None:
         try:
             payload = jwt.decode(token, KEY, algorithms=["HS256"])
-            username_receive = payload["username"]
+            username_token = payload["username"]
+            
+            id = int(request.args["id"])
+            post = db.poster.find_one({"id": id}, {"_id": False})
+            username_post = post["username"]
+            
+            if username_token == username_post:
+                return jsonify({"success": True, "id": id})
+            else:    # if username_token != username_post
+                return jsonify({"success": False, "msg":"작성자만 수정할 수 있습니다."})
         except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
-            return jsonify({"success": False})
-    else: username_receive = "annonymous"
-
-    title_receive = request.form["title_give"]
-    content_receive = request.form["content_give"]
-    time = str(datetime.datetime.now()).split(".")[0]
-    id = db.index.find_one({}, {"_id":False})["index"]
-
-    doc = {
-        "id": id,
-        "username": username_receive,
-        "title": title_receive,
-        "content": content_receive,
-        "time": time,
-    }
-
-    id += 1
-    db.index.update_one({}, {"$set": {"index": id}})
-
-    print(doc)
-    db.poster.insert_one(doc)
-
-    return jsonify({"success": True})
+            # if token is expired
+            return jsonify({"success": False, "msg":"작성자만 수정할 수 있습니다."})
+    else:   # if no valid token in cookie
+        return jsonify({"success": False, "msg":"작성자만 수정할 수 있습니다."})

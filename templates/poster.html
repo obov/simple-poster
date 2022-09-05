@@ -4,7 +4,6 @@
 
 {% block css %}
 <link rel="stylesheet" type="text/css" href="../static/css/poster.css" />
-<!-- 부트스트랩 옮겼습니다! -->
 {% endblock %} {% block script %}
 <script type="text/javascript" src="../static/js/poster.js"></script>
 {% endblock %} {% block content %}
@@ -12,9 +11,9 @@
 <hr />
 <div class="wrapper">
   <div class="post-box card border-light mb-3">
-    <div class="post-title card-header" id="title"></div>
-    <div class="post-name card-body" id="name"></div>
-    <div class="post-body card-body" id="content"></div>
+    <div class="post-title card-header" id="title"><p>{{title}}</p></div>
+    <div class="post-name card-body" id="name"><p>{{username}}</p><span>{{time}}</span></div>
+    <div class="post-body card-body" id="content"><p>{{content}}</p></div>
     <button type="button" id="back" class="backtolist btn btn-secondary" onclick="back()"><i class="bi bi-list"></i><p>목록으로</p></button>
   </div>
 </div>
